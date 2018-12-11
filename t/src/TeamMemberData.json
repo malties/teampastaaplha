@@ -1,0 +1,19 @@
+{
+  "teamMembers":
+  [
+    {
+      "name" : "Florence Afolabi",
+      "uid" : "07",
+      "salaryPerHour" : "1000",
+      "projects" : ["project planner"],
+      "hoursPerWeek" : "10"
+    },
+    {
+      "name" : "Hassan Mualla",
+      "uid" : "02",
+      "salaryPerHour" : "1000",
+      "projects" : ["project planner"],
+      "hoursPerWeek" : "15"
+    }
+  ]
+}
