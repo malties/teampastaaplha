@@ -1,4 +1,4 @@
-package importdata;
+package Import;
 
 public class TeamMemberData {
 

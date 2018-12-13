@@ -1,3 +1,4 @@
+
 {
   "teamMembers":
   [
@@ -14,6 +15,41 @@
       "salaryPerHour" : "1000",
       "projects" : ["project planner"],
       "hoursPerWeek" : "15"
+    },
+    {
+      "name" : "Fredrik Ullman",
+      "uid" : "01",
+      "salaryPerHour" : "1000",
+      "projects" : ["project planner"],
+      "hoursPerWeek" : "12"
+    },
+    {
+      "name" : "George Karageozian",
+      "uid" : "04",
+      "salaryPerHour" : "1000",
+      "projects" : ["project planner"],
+      "hoursPerWeek" : "10"
+    },
+    {
+      "name" : "Abdulkader Shwehne",
+      "uid" : "03",
+      "salaryPerHour" : "1000",
+      "projects" : ["project planner"],
+      "hoursPerWeek" : "17"
+    },
+    {
+      "name" : "Hannah Maltkvist",
+      "uid" : "06",
+      "salaryPerHour" : "1000",
+      "projects" : ["project planner"],
+      "hoursPerWeek" : "15"
+    },
+    {
+      "name" : "Marko Stanoevich",
+      "uid" : "05",
+      "salaryPerHour" : "1000",
+      "projects" : ["project planner"],
+      "hoursPerWeek" : "20"
     }
   ]
 }
