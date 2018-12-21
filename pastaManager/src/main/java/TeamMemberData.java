@@ -1,3 +1,5 @@
+package pastaManager.src.main.java;
+
 public class TeamMemberData {
 
     private String name;
