@@ -72,14 +72,4 @@ public class ImportJSON {
         }
     }
 
-    public static void main(String[] args) {
-        ImportJSON importJSON = new ImportJSON();
-        try {
-            importJSON.addTeamMembers(importJSON.getJsonArray());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
 }
