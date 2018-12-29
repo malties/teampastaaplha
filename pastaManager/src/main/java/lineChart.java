@@ -15,7 +15,6 @@ import javafx.scene.paint.Color;
 import java.awt.*;
 import java.util.Arrays;
 
-import javafx.scene.control.Button;
 
 
 public class lineChart extends Application {
@@ -51,6 +50,20 @@ public class lineChart extends Application {
 
         //Setting the data to line chart
         linechart.getData().add(dummyData);
+        LineChart linechart2 = new LineChart(xAXis,yAxis);
+
+        //prepping dummy data
+        XYChart.Series dummyData2 = new XYChart.Series();
+        dummyData.setName("Earned value ");
+
+        dummyData.getData().add(new XYChart.Data(1, 6000));
+        dummyData.getData().add(new XYChart.Data(1.5, 3000));
+        dummyData.getData().add(new XYChart.Data(2, 14000));
+        dummyData.getData().add(new XYChart.Data(3, 16000));
+        dummyData.getData().add(new XYChart.Data(4, 30000));
+
+        //Setting the data to line chart
+        linechart2.getData().add(dummyData);
 
         Group groot = new Group(linechart);
         //creating scene object
@@ -65,17 +78,9 @@ public class lineChart extends Application {
         primaryStage.show();
 
 
-    }
-
-    public static void main(String[] args) {
-
-
-        launch(args);
-
-
-
-
 
     }
+
+
 }
 
