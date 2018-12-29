@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/javafxtest.iml" filepath="$PROJECT_DIR$/javafxtest.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/teampastaaplha.iml" filepath="$PROJECT_DIR$/.idea/teampastaaplha.iml" />
+>>>>>>> 56ae19b5be2c7bffbd47c4442042aa5eb3df77af
     </modules>
   </component>
 </project>
