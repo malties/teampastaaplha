@@ -9,7 +9,7 @@ import javafx.scene.chart.XYChart;
 
 public class Main extends Application {
     @Override
-    public void start(Stage stage) throws Exception{
+    public void start(Stage stage) throws Exception {
         //Defining the x axis
         NumberAxis xAxis = new NumberAxis (0, 8, 2);
         xAxis.setLabel("Time in weeks");
@@ -37,11 +37,11 @@ public class Main extends Application {
         XYChart.Series series2 = new XYChart.Series();
         series2.setName("AC");
 
-        series2.getData().add(new XYChart.Data(0, 100000));
-        series2.getData().add(new XYChart.Data(2, 200000));
-        series2.getData().add(new XYChart.Data(4, 300000));
-        series2.getData().add(new XYChart.Data(6, 300000));
-        series2.getData().add(new XYChart.Data(8, 400000));
+        series2.getData().add(new XYChart.Data(0, 200000));
+        series2.getData().add(new XYChart.Data(2, 350000));
+        series2.getData().add(new XYChart.Data(4, 400000));
+        series2.getData().add(new XYChart.Data(6, 500000));
+        series2.getData().add(new XYChart.Data(8, 660000));
 
         //Setting the data to Line chart
         linechart.getData().addAll(series,series2);
