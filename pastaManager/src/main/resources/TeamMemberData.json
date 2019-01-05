@@ -1,10 +1,9 @@
-
 {
   "teamMembers":
   [
     {
       "name" : "Florence Afolabi",
-      "uid" : "07",
+      "uid" : "01",
       "salaryPerHour" : "1000",
       "projects" : ["project planner"],
       "hoursPerWeek" : "10"
@@ -18,7 +17,7 @@
     },
     {
       "name" : "Fredrik Ullman",
-      "uid" : "01",
+      "uid" : "03",
       "salaryPerHour" : "1000",
       "projects" : ["project planner"],
       "hoursPerWeek" : "12"
@@ -32,7 +31,7 @@
     },
     {
       "name" : "Abdulkader Shwehne",
-      "uid" : "03",
+      "uid" : "05",
       "salaryPerHour" : "1000",
       "projects" : ["project planner"],
       "hoursPerWeek" : "17"
@@ -46,7 +45,7 @@
     },
     {
       "name" : "Marko Stanoevich",
-      "uid" : "05",
+      "uid" : "07",
       "salaryPerHour" : "1000",
       "projects" : ["project planner"],
       "hoursPerWeek" : "20"

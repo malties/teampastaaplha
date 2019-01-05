@@ -1,14 +1,21 @@
 package pastaManager.src.main.java;
 
 import com.google.gson.*;
+import com.google.gson.stream.JsonReader;
+
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.net.URL;
 import java.util.ArrayList;
+
+import static com.sun.javafx.scene.control.skin.Utils.getResource;
 
 public class ImportJSON {
 
     private ArrayList <TeamMemberData> teamMembers;
-    private static final String JSON_FILE = "./src/main/resources/TeamMemberData.json";
+
+    private static final String JSON_FILE = ClassLoader.getSystemResource("TeamMemberData.json").getFile();
 
     public ImportJSON() {
         this.teamMembers = new ArrayList<>();
@@ -16,18 +23,24 @@ public class ImportJSON {
     
     // Parses the JSON file and returns an array of team members
     public JsonArray getJsonArray() throws Exception {
-        
+
+
         Gson gson = new Gson();
         File file = new File(JSON_FILE);
-        JsonObject jsonObject = gson.fromJson(new FileReader(file), JsonObject.class);
+
+        JsonReader br = new JsonReader(new FileReader(file));
+
+        JsonObject jsonObject = gson.fromJson(br, JsonObject.class);
         JsonArray teamMembersJsonArray = jsonObject.getAsJsonArray("teamMembers");
+
+        br.close();
         return teamMembersJsonArray;
         
     }
 
     // Iterates through the array of team members and extracts the info for each team member
     public void addTeamMembers(JsonArray teamMembersJsonArray) {
-        
+
         for (int i = 0; i < teamMembersJsonArray.size(); i++) {
             
             // Converts each array element into an object
@@ -59,17 +72,33 @@ public class ImportJSON {
         return newTeamMember;
     }
 
-    public void printTeamMemberData() {
+    public String printTeamMemberData() {
+        String data = "";
+        String newLine = System.getProperty("line.separator");
         for (TeamMemberData teamMember: teamMembers) {
 
-            System.out.println("Team member name: " + teamMember.getName());
-            System.out.println("Member ID number: " + teamMember.getUid());
-            System.out.println("Salary per hour: " + teamMember.getSalaryPerHour());
-            System.out.println("Project name: " + teamMember.getProject());
-            System.out.println("Hours per week: " + teamMember.getHoursPerWeek());
-            System.out.println();
+            data += "Team member name: " + teamMember.getName() + newLine +
+                    "Member ID number: " + teamMember.getUid() + newLine +
+                    "Salary (per hour): SEK " + teamMember.getSalaryPerHour() + newLine +
+                    "Current projects: " + teamMember.getProject() + newLine +
+                    "Work hours (per week): " + teamMember.getHoursPerWeek() + newLine + newLine;
 
         }
+        return data;
     }
+
+    public String search(int id) {
+        id--;
+        String info;
+        String newLine = System.getProperty("line.separator");
+        info = "Team member name: " + teamMembers.get(id).getName() + newLine +
+                "Member ID number: " + teamMembers.get(id).getUid() + newLine +
+                "Salary (per hour): SEK " + teamMembers.get(id).getSalaryPerHour() + newLine +
+                "Current projects: " + teamMembers.get(id).getProject() + newLine +
+                "Work hours (per week): " + teamMembers.get(id).getHoursPerWeek();
+        return info;
+
+    }
+
 
 }
