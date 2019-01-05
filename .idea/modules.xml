@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/pastaManager/pastaManager.iml" filepath="$PROJECT_DIR$/pastaManager/pastaManager.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/teampastaaplha.iml" filepath="$PROJECT_DIR$/.idea/teampastaaplha.iml" />
     </modules>
   </component>
