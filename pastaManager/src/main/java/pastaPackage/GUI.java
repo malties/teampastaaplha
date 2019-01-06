@@ -1,4 +1,4 @@
-package pastaManager.src.main.java;
+package pastaPackage;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;

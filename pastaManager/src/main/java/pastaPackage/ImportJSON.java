@@ -1,16 +1,11 @@
-package pastaManager.src.main.java;
+package pastaPackage;
 
 import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.net.URL;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
-
-import static com.sun.javafx.scene.control.skin.Utils.getResource;
 
 public class ImportJSON {
 

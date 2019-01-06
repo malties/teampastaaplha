@@ -1,4 +1,4 @@
-package pastaManager.src.main.java;
+package pastaPackage;
 
 public class Variance {
 
