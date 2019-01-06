@@ -57,7 +57,7 @@ public class ImportJSON {
             newTeamMember.setUid(jsonUid);
             int jsonSalaryPerHour = jsonObject.get("salaryPerHour").getAsInt();
             newTeamMember.setSalaryPerHour(jsonSalaryPerHour);
-            String jsonProject = jsonObject.get("projects").getAsString();
+            String jsonProject = jsonObject.get("project").getAsString();
             newTeamMember.setProject(jsonProject);
             int jsonHoursPerWeek = jsonObject.get("hoursPerWeek").getAsInt();
             newTeamMember.setHoursPerWeek(jsonHoursPerWeek);
@@ -84,10 +84,9 @@ public class ImportJSON {
                 data += "Team member name: " + teamMember.getName() + newLine +
                         "Member ID number: " + teamMember.getUid() + newLine +
                         "Salary (per hour): SEK " + teamMember.getSalaryPerHour() + newLine +
-                        "Current projects: " + teamMember.getProject() + newLine +
+                        "Current project: " + teamMember.getProject() + newLine +
                         "Work hours (per week): " + teamMember.getHoursPerWeek() + newLine +
                         "Number of working weeks: " + teamMember.getWeeks() + newLine + newLine;
-
             }
         }else{
             data = "No team members";
@@ -98,24 +97,26 @@ public class ImportJSON {
     public String printProjectData(){
         String data;
         String newLine = System.getProperty("line.separator");
-        int hours = 0;
+        int hoursPerWeek = 0;
+        int totalHours = 0;
         int actualCostPerWeek = 0;
         int actualCost = 0;
         if(!teamMembers.isEmpty()){
             for (TeamMemberData teamMember: teamMembers) {
-                hours += teamMember.getHoursPerWeek();
+                hoursPerWeek += teamMember.getHoursPerWeek();
+                totalHours += teamMember.getHoursPerWeek() * teamMember.getWeeks();
                 actualCostPerWeek += teamMember.getHoursPerWeek() * teamMember.getSalaryPerHour();
                 actualCost += teamMember.getHoursPerWeek() * teamMember.getSalaryPerHour() * teamMember.getWeeks();
             }
             data =  "Project name: " + teamMembers.get(1).getProject() + newLine +
-                    "Total project hours per week: " + hours + newLine +
-                    "Actual Cost of project per week: " + actualCostPerWeek + " sek" + newLine +
+                    "Number of members: " + teamMembers.size() + newLine +
+                    "Total project hours (per week): " + hoursPerWeek + newLine +
+                    "Total project hours: " + totalHours + newLine +
+                    "Actual Cost of project (per week): " + actualCostPerWeek + " sek" + newLine +
                     "Actual Cost of project: " + actualCost + " sek";
-
         }else{
             data = "No projects";
         }
-
         return data;
     }
 
@@ -128,7 +129,7 @@ public class ImportJSON {
                 info = "Team member name: " + teamMembers.get(id).getName() + newLine +
                         "Member ID number: " + teamMembers.get(id).getUid() + newLine +
                         "Salary (per hour): SEK " + teamMembers.get(id).getSalaryPerHour() + newLine +
-                        "Current projects: " + teamMembers.get(id).getProject() + newLine +
+                        "Current project: " + teamMembers.get(id).getProject() + newLine +
                         "Work hours (per week): " + teamMembers.get(id).getHoursPerWeek();
             }else{
                 return "No member found.";
