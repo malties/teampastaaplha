@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.net.URL;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 import static com.sun.javafx.scene.control.skin.Utils.getResource;
@@ -75,15 +76,37 @@ public class ImportJSON {
     public String printTeamMemberData() {
         String data = "";
         String newLine = System.getProperty("line.separator");
-        for (TeamMemberData teamMember: teamMembers) {
+        if(!teamMembers.isEmpty()) {
+            for (TeamMemberData teamMember : teamMembers) {
 
-            data += "Team member name: " + teamMember.getName() + newLine +
-                    "Member ID number: " + teamMember.getUid() + newLine +
-                    "Salary (per hour): SEK " + teamMember.getSalaryPerHour() + newLine +
-                    "Current projects: " + teamMember.getProject() + newLine +
-                    "Work hours (per week): " + teamMember.getHoursPerWeek() + newLine + newLine;
+                data += "Team member name: " + teamMember.getName() + newLine +
+                        "Member ID number: " + teamMember.getUid() + newLine +
+                        "Salary (per hour): SEK " + teamMember.getSalaryPerHour() + newLine +
+                        "Current projects: " + teamMember.getProject() + newLine +
+                        "Work hours (per week): " + teamMember.getHoursPerWeek() + newLine + newLine;
 
+            }
+        }else{
+            data = "No team members";
         }
+        return data;
+    }
+
+    public String printProjectData(){
+        String data;
+        String newLine = System.getProperty("line.separator");
+        int hours = 0;
+        if(!teamMembers.isEmpty()){
+            for (TeamMemberData teamMember: teamMembers) {
+                hours += teamMember.getHoursPerWeek();
+            }
+            data = "Project name: " + teamMembers.get(1).getProject() + newLine +
+                   "Total project hours per week: " + hours;
+
+        }else{
+            data = "No projects";
+        }
+
         return data;
     }
 
@@ -91,11 +114,23 @@ public class ImportJSON {
         id--;
         String info;
         String newLine = System.getProperty("line.separator");
-        info = "Team member name: " + teamMembers.get(id).getName() + newLine +
-                "Member ID number: " + teamMembers.get(id).getUid() + newLine +
-                "Salary (per hour): SEK " + teamMembers.get(id).getSalaryPerHour() + newLine +
-                "Current projects: " + teamMembers.get(id).getProject() + newLine +
-                "Work hours (per week): " + teamMembers.get(id).getHoursPerWeek();
+        try{
+            if(!teamMembers.isEmpty()) {
+                info = "Team member name: " + teamMembers.get(id).getName() + newLine +
+                        "Member ID number: " + teamMembers.get(id).getUid() + newLine +
+                        "Salary (per hour): SEK " + teamMembers.get(id).getSalaryPerHour() + newLine +
+                        "Current projects: " + teamMembers.get(id).getProject() + newLine +
+                        "Work hours (per week): " + teamMembers.get(id).getHoursPerWeek();
+            }else{
+                return "No member found.";
+            }
+        }catch(Exception e){
+            return "No members found.";
+        }
+
+        if(info == ""){
+            return "No members found.";
+        }
         return info;
 
     }

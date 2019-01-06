@@ -23,6 +23,7 @@ public class GUI extends Application {
     Button searchButton;
     Button importButton;
     Button printAllButton;
+    Button printProject;
     Button costVarianceButton;
 
     public static void main(String[] args) {
@@ -67,12 +68,23 @@ public class GUI extends Application {
 
         // Prints all team members' information
         Label printAllLabel = new Label("View all team member's data");
-        printAllButton = new Button("SHow All");
+        printAllButton = new Button("Show All Members");
         printAllButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
 
                 printAllTeamMembers();
+            }
+        });
+
+        // Prints project information
+        Label printProjectLabel = new Label("View project information");
+        printProject = new Button("Show project information");
+        printProject.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                printProjectInformation();
             }
         });
 
@@ -99,8 +111,8 @@ public class GUI extends Application {
         });
 
         VBox layout = new VBox(20);
-        layout.getChildren().addAll(importLabel, importButton, printAllLabel, printAllButton, searchLabel, searchButton,
-                cvLabel, costVarianceButton);
+        layout.getChildren().addAll(importLabel, importButton, printAllLabel, printAllButton,
+                printProjectLabel, printProject, searchLabel, searchButton, cvLabel, costVarianceButton);
         layout.setAlignment(Pos.TOP_CENTER);
         layout.setSpacing(20);
 
@@ -114,6 +126,14 @@ public class GUI extends Application {
 
         importJSON.addTeamMembers(importJSON.getJsonArray());
 
+    }
+
+    public void showEarnedVariance(){
+        // TODO
+    }
+
+    public void showScheduceVariance(){
+        // TODO
     }
 
     public void showCostVariance(){
@@ -195,6 +215,30 @@ public class GUI extends Application {
         window.show();
     }
 
+    public void printProjectInformation(){
+        // A new window
+        final Stage window = new Stage();
+        window.setTitle("Project Information");
+        window.setMinHeight(300);
+        window.setMinWidth(300);
+
+        Label label = new Label("Project Information:");
+        Text text = new Text();
+        text.setText(importJSON.printProjectData());
+
+        // Adds elements to window
+        VBox layout = new VBox(20);
+        layout.getChildren().addAll(label, text);
+        layout.setAlignment(Pos.TOP_CENTER);
+        layout.setSpacing(20);
+
+        // Makes a new scene, adds to window
+        Scene scene = new Scene(layout);
+        window.setScene(scene);
+        window.show();
+
+    }
+
     public void searchByTeamMember() {
         
         // A new window
@@ -242,9 +286,6 @@ public class GUI extends Application {
         Scene scene = new Scene(layout);
         window.setScene(scene);
         window.show();
-        
-
-
 
      }
 
