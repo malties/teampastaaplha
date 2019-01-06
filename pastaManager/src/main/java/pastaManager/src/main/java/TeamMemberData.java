@@ -7,6 +7,7 @@ public class TeamMemberData {
     private int salaryPerHour;
     private String project;
     private int hoursPerWeek;
+    private int weeks;
 
     public String getName() {
         return name;
@@ -47,4 +48,8 @@ public class TeamMemberData {
     public void setHoursPerWeek(int hoursPerWeek) {
         this.hoursPerWeek = hoursPerWeek;
     }
+
+    public void setWeeks(int weeks){ this.weeks = weeks; }
+
+    public int getWeeks(){ return this.weeks; }
 }

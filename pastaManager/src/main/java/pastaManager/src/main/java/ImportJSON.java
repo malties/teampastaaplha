@@ -61,6 +61,8 @@ public class ImportJSON {
             newTeamMember.setProject(jsonProject);
             int jsonHoursPerWeek = jsonObject.get("hoursPerWeek").getAsInt();
             newTeamMember.setHoursPerWeek(jsonHoursPerWeek);
+            int jsonWeeks = jsonObject.get("weeks").getAsInt();
+            newTeamMember.setWeeks(jsonWeeks);
 
             // Adds each team member to an array list
             teamMembers.add(newTeamMember);
@@ -83,7 +85,8 @@ public class ImportJSON {
                         "Member ID number: " + teamMember.getUid() + newLine +
                         "Salary (per hour): SEK " + teamMember.getSalaryPerHour() + newLine +
                         "Current projects: " + teamMember.getProject() + newLine +
-                        "Work hours (per week): " + teamMember.getHoursPerWeek() + newLine + newLine;
+                        "Work hours (per week): " + teamMember.getHoursPerWeek() + newLine +
+                        "Number of working weeks: " + teamMember.getWeeks() + newLine + newLine;
 
             }
         }else{
@@ -96,12 +99,18 @@ public class ImportJSON {
         String data;
         String newLine = System.getProperty("line.separator");
         int hours = 0;
+        int actualCostPerWeek = 0;
+        int actualCost = 0;
         if(!teamMembers.isEmpty()){
             for (TeamMemberData teamMember: teamMembers) {
                 hours += teamMember.getHoursPerWeek();
+                actualCostPerWeek += teamMember.getHoursPerWeek() * teamMember.getSalaryPerHour();
+                actualCost += teamMember.getHoursPerWeek() * teamMember.getSalaryPerHour() * teamMember.getWeeks();
             }
-            data = "Project name: " + teamMembers.get(1).getProject() + newLine +
-                   "Total project hours per week: " + hours;
+            data =  "Project name: " + teamMembers.get(1).getProject() + newLine +
+                    "Total project hours per week: " + hours + newLine +
+                    "Actual Cost of project per week: " + actualCostPerWeek + " sek" + newLine +
+                    "Actual Cost of project: " + actualCost + " sek";
 
         }else{
             data = "No projects";

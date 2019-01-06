@@ -4,51 +4,58 @@
     {
       "name" : "Florence Afolabi",
       "uid" : "01",
-      "salaryPerHour" : "1000",
+      "salaryPerHour" : "120",
       "projects" : ["project planner"],
-      "hoursPerWeek" : "10"
+      "hoursPerWeek" : "10",
+      "weeks" : "8"
     },
     {
       "name" : "Hassan Mualla",
       "uid" : "02",
-      "salaryPerHour" : "1000",
+      "salaryPerHour" : "120",
       "projects" : ["project planner"],
-      "hoursPerWeek" : "15"
+      "hoursPerWeek" : "15",
+      "weeks" : "8"
     },
     {
       "name" : "Fredrik Ullman",
       "uid" : "03",
-      "salaryPerHour" : "1000",
+      "salaryPerHour" : "120",
       "projects" : ["project planner"],
-      "hoursPerWeek" : "12"
+      "hoursPerWeek" : "12",
+      "weeks" : "8"
     },
     {
       "name" : "George Karageozian",
       "uid" : "04",
-      "salaryPerHour" : "1000",
+      "salaryPerHour" : "120",
       "projects" : ["project planner"],
-      "hoursPerWeek" : "10"
+      "hoursPerWeek" : "10",
+      "weeks" : "8"
     },
     {
       "name" : "Abdulkader Shwehne",
       "uid" : "05",
-      "salaryPerHour" : "1000",
+      "salaryPerHour" : "120",
       "projects" : ["project planner"],
-      "hoursPerWeek" : "17"
+      "hoursPerWeek" : "17",
+      "weeks" : "8"
     },
     {
       "name" : "Hannah Maltkvist",
       "uid" : "06",
-      "salaryPerHour" : "1000",
+      "salaryPerHour" : "120",
       "projects" : ["project planner"],
-      "hoursPerWeek" : "15"
+      "hoursPerWeek" : "15",
+      "weeks" : "8"
     },
     {
       "name" : "Marko Stanoevich",
       "uid" : "07",
-      "salaryPerHour" : "1000",
+      "salaryPerHour" : "120",
       "projects" : ["project planner"],
-      "hoursPerWeek" : "20"
+      "hoursPerWeek" : "20",
+      "weeks" : "8"
     }
   ]
 }
