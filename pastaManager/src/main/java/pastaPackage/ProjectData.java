@@ -10,14 +10,6 @@ public class ProjectData {
     private int completion;
     private double budget;
 
-    public ProjectData(String PName, double budget, int PId, ArrayList<TeamMemberData> TeamMembers, int completion) {
-        this.PName = PName;
-        this.PId = PId;
-        this.TeamMembers = TeamMembers;
-        this.completion = completion;
-        this.budget = budget;
-    }
-
     public String getPName() {
         return PName;
     }

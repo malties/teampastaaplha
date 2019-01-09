@@ -140,5 +140,16 @@ public class ImportJSON {
 
     }
 
+    //get all salaries per week.
+    public int getTeamSalaries() {
+        int totalSalary = 0;
+        if (!this.teamMembers.isEmpty()) {
+            for ( TeamMemberData teamMember : teamMembers){
+                totalSalary += (teamMember.getHoursPerWeek() * teamMember.getSalaryPerHour());
+            }
+        }
+        return totalSalary;
+    }
+
 
 }
