@@ -11,6 +11,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -225,6 +226,12 @@ public class GUI extends Application {
         Label label = new Label("Project Information:");
         Text text = new Text();
         text.setText(importJSON.printProjectData());
+
+        Label labelWeek = new Label("Current week: ");
+        Label labelCompletion = new Label("Enter Project Completion %: ");
+
+        MenuItem week1 = new MenuItem("Week 1");
+        MenuItem week2 = new MenuItem("Week 2");
 
         // Adds elements to window
         VBox layout = new VBox(20);

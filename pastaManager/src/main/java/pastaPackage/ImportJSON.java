@@ -89,6 +89,16 @@ public class ImportJSON {
         return data;
     }
 
+    public int getSumOFSalaries(){
+        int sum = 0;
+        if(!teamMembers.isEmpty()){
+            for(TeamMemberData teamMember : teamMembers){
+                sum += teamMember.getSalaryPerHour();
+            }
+        }
+        return sum;
+    }
+
     public String printProjectData(){
         String data;
         String newLine = System.getProperty("line.separator");
