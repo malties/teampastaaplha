@@ -1,13 +1,13 @@
 package pastaPackage;
 
-import java.util.ArrayList;
-
 public class ProjectData {
 
     private String PName;
-    private int PId;
-    private ArrayList<TeamMemberData> TeamMembers;
-    private int completion;
+    private String PId;
+    private int startWeek;
+    private int endWeek;
+    private int startYear;
+    private int endYear;
     private double budget;
 
     public String getPName() {
@@ -18,28 +18,44 @@ public class ProjectData {
         this.PName = PName;
     }
 
-    public int getPId() {
+    public String getPId() {
         return PId;
     }
 
-    public void setPId(int PId) {
+    public void setPId(String PId) {
         this.PId = PId;
     }
 
-    public ArrayList<TeamMemberData> getTeamMembers() {
-        return TeamMembers;
+    public int getStartWeek() {
+        return startWeek;
     }
 
-    public void setTeamMembers(ArrayList<TeamMemberData> teamMembers) {
-        TeamMembers = teamMembers;
+    public void setStartWeek(int startWeek) {
+        this.startWeek = startWeek;
     }
 
-    public int getCompletion() {
-        return completion;
+    public int getEndWeek() {
+        return endWeek;
     }
 
-    public void setCompletion(int completion) {
-        this.completion = completion;
+    public void setEndWeek(int endWeek) {
+        this.endWeek = endWeek;
+    }
+
+    public int getStartYear() {
+        return startYear;
+    }
+
+    public void setStartYear(int startYear) {
+        this.startYear = startYear;
+    }
+
+    public int getEndYear() {
+        return endYear;
+    }
+
+    public void setEndYear(int endYear) {
+        this.endYear = endYear;
     }
 
     public double getBudget() {
