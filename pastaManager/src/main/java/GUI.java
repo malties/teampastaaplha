@@ -1,6 +1,8 @@
 package pastaManager.src.main.java;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -16,6 +18,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.control.ComboBox;
 
 public class GUI extends Application {
 
@@ -84,6 +87,18 @@ public class GUI extends Application {
             public void handle(ActionEvent event) {
 
                 searchByTeamMember();
+            }
+        });
+
+        //Search completion by month
+        Label searchMonthLabel = new Label("Search percentage of completion by month");
+        searchButton = new Button("Search by month");
+        searchButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                searchByMonth();
+
             }
         });
 
@@ -243,6 +258,67 @@ public class GUI extends Application {
         window.setScene(scene);
         window.show();
         
+
+
+
+     }
+
+     public void searchByMonth(){
+        //A new window
+         final Stage window = new Stage();
+         window.setTitle("Search percentage of completion by month");
+         window.setMinHeight(600);
+         window.setMinWidth(600);
+
+         //Elements of the search window
+         Label label = new Label("Search percentage of completion by month");
+         /*
+         final TextField input = new TextField();
+         input.setPromptText("Enter the month");
+         final Text text = new Text();
+         */
+         ObservableList<String> options =
+                 FXCollections.observableArrayList(
+                         "Option 1", "Option 2", "Option 3"
+                 );
+         final ComboBox comboBox = new ComboBox (options);
+
+
+         Button searchMonth = new Button("Search");
+         searchMonth.setOnAction(new EventHandler<ActionEvent>() {
+             @Override
+             public void handle(ActionEvent event) {
+
+
+             }
+
+
+             Button close = new Button("Close window");
+        close.setOnAction(new EventHandler<ActionEvent>() {
+                 @Override
+                 public void handle(ActionEvent event) {
+                     window.close();
+                 }
+             });
+
+             // Adds elements to window
+             VBox layout = new VBox(20);
+        layout.getChildren().addAll(label, input, searchUid, text, close);
+        layout.setAlignment(Pos.TOP_CENTER);
+        layout.setSpacing(20);
+
+             // Makes a new scene, adds to window
+             Scene scene = new Scene(layout);
+        window.setScene(scene);
+        window.show();
+
+
+
+
+         }
+
+         });
+
 
 
 
