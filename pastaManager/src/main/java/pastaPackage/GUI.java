@@ -27,6 +27,7 @@ public class GUI extends Application {
     Button earnedValueButton;
     Button scheduleVarianceButton;
     Button costVarianceButton;
+    Button riskMatrixButton;
 
     public static void main(String[] args) {
 
@@ -101,6 +102,17 @@ public class GUI extends Application {
             }
         });
 
+        // Opens Risk Matrix window
+        Label rmLabel = new Label("Risk Matrix");
+        riskMatrixButton = new Button("Risk Matrix");
+        riskMatrixButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                showRiskMatrix();
+            }
+        });
+
         // Opens Cost Variance window
         Label cvLabel = new Label("Cost Variance");
         costVarianceButton = new Button("Cost Variance");
@@ -136,8 +148,8 @@ public class GUI extends Application {
 
         VBox layout = new VBox(20);
         layout.getChildren().addAll(importLabel, importButton, printAllLabel, printAllButton,
-                printProjectLabel, printProject, searchLabel, searchButton, evLabel, earnedValueButton,
-                svLabel, scheduleVarianceButton, cvLabel, costVarianceButton);
+                printProjectLabel, printProject, searchLabel, searchButton, rmLabel, riskMatrixButton,
+                evLabel, earnedValueButton, svLabel, scheduleVarianceButton, cvLabel, costVarianceButton);
         layout.setAlignment(Pos.TOP_CENTER);
         layout.setSpacing(20);
 
@@ -151,6 +163,10 @@ public class GUI extends Application {
 
         importJSON.addTeamMembers(importJSON.getJsonArray());
 
+    }
+
+    public void showRiskMatrix(){
+        // TODO
     }
 
     public void showEarnedValue(){
