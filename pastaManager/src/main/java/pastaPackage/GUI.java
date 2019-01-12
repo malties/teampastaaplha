@@ -24,6 +24,8 @@ public class GUI extends Application {
     Button importButton;
     Button printAllButton;
     Button printProject;
+    Button earnedValueButton;
+    Button scheduleVarianceButton;
     Button costVarianceButton;
 
     public static void main(String[] args) {
@@ -110,9 +112,32 @@ public class GUI extends Application {
             }
         });
 
+        // Opens Schedule Variance window
+        Label svLabel = new Label("Schedule Variance");
+        scheduleVarianceButton = new Button("Schedule Variance");
+        scheduleVarianceButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                showScheduleVariance();
+            }
+        });
+
+        // Opens Earned Value window
+        Label evLabel = new Label("Earned Value");
+        earnedValueButton = new Button("Earned Value");
+        earnedValueButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                showEarnedValue();
+            }
+        });
+
         VBox layout = new VBox(20);
         layout.getChildren().addAll(importLabel, importButton, printAllLabel, printAllButton,
-                printProjectLabel, printProject, searchLabel, searchButton, cvLabel, costVarianceButton);
+                printProjectLabel, printProject, searchLabel, searchButton, evLabel, earnedValueButton,
+                svLabel, scheduleVarianceButton, cvLabel, costVarianceButton);
         layout.setAlignment(Pos.TOP_CENTER);
         layout.setSpacing(20);
 
@@ -128,11 +153,11 @@ public class GUI extends Application {
 
     }
 
-    public void showEarnedVariance(){
+    public void showEarnedValue(){
         // TODO
     }
 
-    public void showScheduceVariance(){
+    public void showScheduleVariance(){
         // TODO
     }
 
