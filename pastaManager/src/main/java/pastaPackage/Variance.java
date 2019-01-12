@@ -34,12 +34,12 @@ public class Variance {
 
         // get current week and year from the user
         int currentYear = 0;
-        if( (lastWeek > firstWeek && (lastYear - firstYear) == 0) ||
-                (lastWeek < firstWeek && (lastYear - firstYear) == 1) ) {
+        if(! ((lastWeek > firstWeek && (lastYear - firstYear) == 0) ||
+                (lastWeek < firstWeek && (lastYear - firstYear) == 1) )) {
             currentYear = UserInput.readInt("What Year is this?");
         }
         int currentWeek = UserInput.readInt("What week is this?");
-        if ( currentYear != 0) {
+        if ( (currentYear - firstYear) != 0) {
             currentWeek += (currentYear - firstYear) * 52;
         }
 
