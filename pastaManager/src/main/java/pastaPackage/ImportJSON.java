@@ -106,9 +106,7 @@ public class ImportJSON {
                 participantsInfo += " - " + teamMember.getName() + ": "
                         + teamMember.getHoursPerWeek() * teamMember.getWeeks() + "h" + newLine;
             }
-            data =  "Project name: " + teamMembers.get(1).getProject() + newLine +
-                    "Number of members: " + teamMembers.size() + newLine +
-                    "Total project hours (per week): " + hoursPerWeek + " hours" + newLine +
+            data =  "Total project hours (per week): " + hoursPerWeek + " hours" + newLine +
                     "Total project hours: " + totalHours + " hours" + newLine +
                     "Actual Cost of project (per week): " + actualCostPerWeek + " sek" + newLine +
                     "Actual Cost of project: " + actualCost + " sek" + newLine +

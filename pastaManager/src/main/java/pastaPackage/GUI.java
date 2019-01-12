@@ -19,7 +19,8 @@ import javafx.stage.Stage;
 
 public class GUI extends Application {
 
-    ImportJSON importJSON = new ImportJSON();
+    ImportJSON importMemeberJSON = new ImportJSON();
+    ImportProjectJSON importProjectJSON = new ImportProjectJSON();
     Button searchButton;
     Button importButton;
     Button printAllButton;
@@ -161,7 +162,8 @@ public class GUI extends Application {
 
     public void importJSON() throws Exception{
 
-        importJSON.addTeamMembers(importJSON.getJsonArray());
+        importMemeberJSON.addTeamMembers(importMemeberJSON.getJsonArray());
+        importProjectJSON.addProjectInformation(importProjectJSON.getJsonPData());
 
     }
 
@@ -241,7 +243,7 @@ public class GUI extends Application {
 
         Label label = new Label("All team members:");
         Text text = new Text();
-        text.setText(importJSON.printTeamMemberData());
+        text.setText(importMemeberJSON.printTeamMemberData());
 
 
         // Adds elements to window
@@ -265,7 +267,7 @@ public class GUI extends Application {
 
         Label label = new Label("Project Information:");
         Text text = new Text();
-        text.setText(importJSON.printProjectData());
+        text.setText(importProjectJSON.getProjectData() + importMemeberJSON.printProjectData());
 
         // Adds elements to window
         VBox layout = new VBox(20);
@@ -303,7 +305,7 @@ public class GUI extends Application {
                 try {
                     id = Integer.parseInt(input.getText());
 
-                    text.setText(importJSON.search(id));
+                    text.setText(importMemeberJSON.search(id));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
