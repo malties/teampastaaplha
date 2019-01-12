@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7a725f1-dc34-4b3d-a1dc-cebf91b6c31e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pastaPackage/ImportJSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pastaPackage/ImportJSON.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pastaPackage/ImportProjectJSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pastaPackage/ImportProjectJSON.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pastaPackage/ProjectData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pastaPackage/ProjectData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pastaPackage/Variance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pastaPackage/Variance.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/ProjectData.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ProjectData.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -20,33 +20,22 @@
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/ProjectData.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="297">
-                  <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
-                  <folding>
-                    <element signature="e#602#603#0" expanded="true" />
-                    <element signature="e#644#645#0" expanded="true" />
-                    <element signature="e#819#820#0" expanded="true" />
-                    <element signature="e#851#852#0" expanded="true" />
-                    <element signature="e#898#899#0" expanded="true" />
-                    <element signature="e#940#941#0" expanded="true" />
-                    <element signature="e#971#972#0" expanded="true" />
-                    <element signature="e#1001#1002#0" expanded="true" />
-                    <element signature="e#1044#1045#0" expanded="true" />
-                    <element signature="e#1082#1083#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/ImportProjectJSON.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="674">
-                  <caret line="64" column="9" lean-forward="true" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
+                <state relative-caret-position="637">
+                  <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                    <element signature="e#1732#1733#0" expanded="true" />
+                    <element signature="e#1781#1782#0" expanded="true" />
+                    <element signature="e#1811#1812#0" expanded="true" />
+                    <element signature="e#1858#1859#0" expanded="true" />
+                    <element signature="e#1890#1891#0" expanded="true" />
+                    <element signature="e#1939#1940#0" expanded="true" />
+                    <element signature="e#1969#1970#0" expanded="true" />
+                    <element signature="e#2016#2017#0" expanded="true" />
+                    <element signature="e#2048#2049#0" expanded="true" />
+                    <element signature="e#2094#2095#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -55,8 +44,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/ImportJSON.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="306">
-                  <caret line="108" column="20" selection-start-line="108" selection-start-column="20" selection-end-line="108" selection-end-column="20" />
+                <state relative-caret-position="115">
+                  <caret line="115" column="9" lean-forward="true" selection-start-line="115" selection-start-column="9" selection-end-line="115" selection-end-column="9" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#382#383#0" expanded="true" />
@@ -69,26 +58,17 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/resources/ProjectData.json">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="68">
-                  <caret line="4" column="19" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="19" />
+                <state relative-caret-position="153">
+                  <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/Variance.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="578">
-                  <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/UserInput.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="459">
-                  <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+                <state relative-caret-position="357">
+                  <caret line="23" column="32" lean-forward="true" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
                 </state>
               </provider>
             </entry>
@@ -96,17 +76,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="289">
-                  <caret line="269" column="22" lean-forward="true" selection-start-line="269" selection-start-column="22" selection-end-line="269" selection-end-column="22" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/pom.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="221">
-                  <caret line="13" column="62" lean-forward="true" selection-start-line="13" selection-start-column="62" selection-end-line="13" selection-end-column="62" />
+                <state relative-caret-position="306">
+                  <caret line="269" column="55" selection-start-line="269" selection-start-column="55" selection-end-line="269" selection-end-column="55" />
                 </state>
               </provider>
             </entry>
@@ -129,10 +100,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/ImportJSON.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="130">
+                <state relative-caret-position="161">
                   <caret line="93" column="8" lean-forward="true" selection-start-line="93" selection-start-column="8" selection-end-line="93" selection-end-column="62" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -161,6 +132,25 @@
               </provider>
             </entry>
           </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/ProjectData.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="501">
+                  <caret line="69" column="64" lean-forward="true" selection-start-line="69" selection-start-column="3" selection-end-line="69" selection-end-column="64" />
+                  <folding>
+                    <element signature="e#602#603#0" expanded="true" />
+                    <element signature="e#644#645#0" expanded="true" />
+                    <element signature="e#819#820#0" expanded="true" />
+                    <element signature="e#851#852#0" expanded="true" />
+                    <element signature="e#898#899#0" expanded="true" />
+                    <element signature="e#940#941#0" expanded="true" />
+                    <element signature="e#1044#1045#0" expanded="true" />
+                    <element signature="e#1082#1083#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
         </leaf>
       </split-second>
     </splitter>
@@ -181,9 +171,9 @@
       <find>SHow al</find>
       <find>getProject</find>
       <find>getJsonPData</find>
-      <find>importJSON</find>
       <find>getJsonArray</find>
       <find>getJson</find>
+      <find>importJSON</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -199,13 +189,13 @@
         <option value="$PROJECT_DIR$/src/main/java/pastaManager/src/main/java/TeamMemberData.java" />
         <option value="$PROJECT_DIR$/src/main/resources/TeamMemberData.json" />
         <option value="$PROJECT_DIR$/src/main/java/pastaManager/src/main/java/ImportJSON.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pastaPackage/ProjectData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pastaPackage/Variance.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/ProjectData.json" />
         <option value="$PROJECT_DIR$/src/main/java/pastaPackage/ImportJSON.java" />
         <option value="$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/ProjectData.json" />
+        <option value="$PROJECT_DIR$/src/main/java/pastaPackage/ProjectData.java" />
         <option value="$PROJECT_DIR$/src/main/java/pastaPackage/ImportProjectJSON.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pastaPackage/Variance.java" />
       </list>
     </option>
   </component>
@@ -299,7 +289,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547325362313" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547329457547" />
     <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/TeamPastaAlphaFX" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -363,7 +353,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.123667374" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.123667374" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -372,7 +362,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.1603467" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.1603467" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -393,37 +383,6 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Database" order="8" />
     </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.123667374" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.1603467" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32936078" />
-      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" weight="0.054371003" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Database" order="8" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -447,20 +406,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/Individual.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="62" lean-forward="true" selection-start-line="13" selection-start-column="62" selection-end-line="13" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/Variance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/UserInput.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -475,17 +420,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/ProjectData.json">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="19" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="269" column="22" lean-forward="true" selection-start-line="269" selection-start-column="22" selection-end-line="269" selection-end-column="22" />
+        <state relative-caret-position="221">
+          <caret line="13" column="62" lean-forward="true" selection-start-line="13" selection-start-column="62" selection-end-line="13" selection-end-column="62" />
         </state>
       </provider>
     </entry>
@@ -498,8 +436,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/ProjectData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
+        <state relative-caret-position="501">
+          <caret line="69" column="64" lean-forward="true" selection-start-line="69" selection-start-column="3" selection-end-line="69" selection-end-column="64" />
           <folding>
             <element signature="e#602#603#0" expanded="true" />
             <element signature="e#644#645#0" expanded="true" />
@@ -507,18 +445,36 @@
             <element signature="e#851#852#0" expanded="true" />
             <element signature="e#898#899#0" expanded="true" />
             <element signature="e#940#941#0" expanded="true" />
-            <element signature="e#971#972#0" expanded="true" />
-            <element signature="e#1001#1002#0" expanded="true" />
             <element signature="e#1044#1045#0" expanded="true" />
             <element signature="e#1082#1083#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/ImportProjectJSON.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="637">
+          <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1732#1733#0" expanded="true" />
+            <element signature="e#1781#1782#0" expanded="true" />
+            <element signature="e#1811#1812#0" expanded="true" />
+            <element signature="e#1858#1859#0" expanded="true" />
+            <element signature="e#1890#1891#0" expanded="true" />
+            <element signature="e#1939#1940#0" expanded="true" />
+            <element signature="e#1969#1970#0" expanded="true" />
+            <element signature="e#2016#2017#0" expanded="true" />
+            <element signature="e#2048#2049#0" expanded="true" />
+            <element signature="e#2094#2095#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/ImportJSON.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="108" column="20" selection-start-line="108" selection-start-column="20" selection-end-line="108" selection-end-column="20" />
+        <state relative-caret-position="115">
+          <caret line="115" column="9" lean-forward="true" selection-start-line="115" selection-start-column="9" selection-end-line="115" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#382#383#0" expanded="true" />
@@ -527,13 +483,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/ImportProjectJSON.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="674">
-          <caret line="64" column="9" lean-forward="true" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="306">
+          <caret line="269" column="55" selection-start-line="269" selection-start-column="55" selection-end-line="269" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/ProjectData.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/Variance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="23" column="32" lean-forward="true" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
         </state>
       </provider>
     </entry>

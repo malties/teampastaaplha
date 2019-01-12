@@ -6,6 +6,10 @@
     "startYear": 2018,
     "endYear": 2019,
     "endWeek": 4,
-    "budget": 80000
+    "budget": 80000,
+    "ACQ1" : 200,
+    "ACQ2" : 250,
+    "ACQ3" : 170,
+    "ACQ4" : 210
   }
 }
