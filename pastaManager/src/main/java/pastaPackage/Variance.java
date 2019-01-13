@@ -1,10 +1,10 @@
 package pastaPackage;
 
+import java.util.ArrayList;
+
 public class Variance {
 
-    public Variance(int week, int year){
-        this.week = week;
-        this.year = year;
+    public Variance(){
     }
 
     private ImportJSON jsonForCalcs = new ImportJSON();
@@ -12,17 +12,19 @@ public class Variance {
     private int week;
     private int year;
 
-    public double actualSpent(int additionalCosts){
-        int salaries = jsonForCalcs.getTeamSalaries();
-        return additionalCosts + salaries;
+    public double actualSpent(int week){
+        double salaries = plannedSpent(week);
+        int additionalCosts = jsonPDataForCalcs.getAdditionalCost(week/2);
+        return  salaries;
     }
 
-    public int plannedSpent(){
-        return jsonForCalcs.getTeamSalaries();
+    public double plannedSpent(int weeks){
+        int allSalaries = jsonForCalcs.getTeamSalaries();
+        allSalaries = allSalaries * (weeks/calculateTotalWeeks());
+        return allSalaries;
     }
 
-    public double calculateEV(){
-
+    public int calculateTotalWeeks(){
         // calculate total number of weeks difference from start to end of project
         int firstWeek = jsonPDataForCalcs.getStartWeek();
         int lastWeek = jsonPDataForCalcs.getEndWeek();
@@ -38,16 +40,35 @@ public class Variance {
             totalWeeks += (lastYear - firstYear -1 ) * 52;
         }
 
+        return totalWeeks;
+    }
+
+    /*
+    public int getCurrentWeek(int week) {
+        int totalWeeks = calculateTotalWeeks();
+        int firstWeek = jsonPDataForCalcs.getStartWeek();
+        int lastWeek = jsonPDataForCalcs.getEndWeek();
+        int firstYear = jsonPDataForCalcs.getStartYear();
+        int lastYear = jsonPDataForCalcs.getEndYear();
+
         // get current week and year from the user
         int currentYear = 0;
         if(! ((lastWeek > firstWeek && (lastYear - firstYear) == 0) ||
                 (lastWeek < firstWeek && (lastYear - firstYear) == 1) )) {
-            currentYear = year;
+            currentYear = this.year;
         }
-        int currentWeek = week;
+        int currentWeek = this.week;
         if ( (currentYear - firstYear) != 0) {
             currentWeek += (currentYear - firstYear) * 52;
         }
+        return currentWeek;
+    }
+*/
+
+    public double calculateEV(int currentWeek){
+
+        //int currentWeek = getCurrentWeek();
+        int totalWeeks = calculateTotalWeeks();
 
         //calculate % completion
         double completion = currentWeek/totalWeeks;
@@ -59,10 +80,25 @@ public class Variance {
         return EV;
     }
 
-    public double calculateSV(){
-        return calculateEV() + plannedSpent();
+    public ArrayList<Double> getCV(){
+        ArrayList <Double> CV = new ArrayList<>();
+        for ( int i = 0; i <= calculateTotalWeeks(); i = i+2){
+            CV.add(actualSpent(i));
+            CV.add(calculateEV(i));
+        }
+        return CV;
     }
 
+    public ArrayList<Double> getSV(){
+        ArrayList <Double> SV = new ArrayList<>();
+        for ( int i = 0; i <= calculateTotalWeeks(); i = i+2){
+            SV.add(plannedSpent(i));
+            SV.add(calculateEV(i));
+        }
+        return SV;
+    }
+
+    /*
     // quartile should be 1 to 4
     public double calculateCV(int quartile){
         if(quartile == 1){
@@ -76,6 +112,6 @@ public class Variance {
         }
         return 0.0;
     }
-
+    */
 
 }

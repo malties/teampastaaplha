@@ -6,6 +6,7 @@ import com.google.gson.stream.JsonReader;
 
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
 
 public class ImportProjectJSON {
 
@@ -49,6 +50,23 @@ public class ImportProjectJSON {
         projData.setStartYear(jsonStartYear);
         int jsonEndYear = jsonPData.get("endYear").getAsInt();
         projData.setEndYear(jsonEndYear);
+
+        JsonArray additionalCostsAsJson = jsonPData.get("additionalCosts").getAsJsonArray();
+        ArrayList<String> additionalCostsAsString = new ArrayList<>();
+        ArrayList<Integer> additionalCosts = new ArrayList<>();
+        if (additionalCostsAsJson != null) {
+            int len = additionalCostsAsJson.size();
+            for (int i=0;i<len;i++){
+                additionalCostsAsString.add(additionalCostsAsJson.get(i).toString());
+            }
+
+            for (String intToParse : additionalCostsAsString){
+                additionalCosts.add( Integer.parseInt(intToParse) );
+            }
+        }
+        projData.setAdditionalCosts(additionalCosts);
+
+        /*
         int jsonAdditionalCostQ1 = jsonPData.get("ACQ1").getAsInt();
         projData.setAdditionalCostQ1(jsonAdditionalCostQ1);
         int jsonAdditionalCostQ2 = jsonPData.get("ACQ2").getAsInt();
@@ -57,7 +75,7 @@ public class ImportProjectJSON {
         projData.setAdditionalCostQ3(jsonAdditionalCostQ3);
         int jsonAdditionalCostQ4 = jsonPData.get("ACQ4").getAsInt();
         projData.setAdditionalCostQ4(jsonAdditionalCostQ4);
-
+*/
         this.projectData = projData;
     }
 
@@ -93,6 +111,11 @@ public class ImportProjectJSON {
         return projectData.getBudget();
     }
 
+    public int getAdditionalCost(int interval){
+        return projectData.getAdditionalCost(interval);
+    }
+
+    /*
     public int getAdditionalCostQ1(){ return projectData.getAdditionalCostQ1(); }
 
     public int getAdditionalCostQ2(){ return projectData.getAdditionalCostQ2(); }
@@ -100,5 +123,5 @@ public class ImportProjectJSON {
     public int getAdditionalCostQ3(){ return projectData.getAdditionalCostQ3(); }
 
     public int getAdditionalCostQ4(){ return projectData.getAdditionalCostQ4(); }
-
+    */
 }

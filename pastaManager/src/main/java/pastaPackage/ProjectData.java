@@ -1,5 +1,7 @@
 package pastaPackage;
 
+import java.util.ArrayList;
+
 public class ProjectData {
 
     private String PName;
@@ -9,11 +11,15 @@ public class ProjectData {
     private int startYear;
     private int endYear;
     private double budget;
+    private ArrayList<Integer> additionalCosts;
+    private int additionalCost;
+
+    /*
     private int additionalCostQ1;
     private int additionalCostQ2;
     private int additionalCostQ3;
     private int additionalCostQ4;
-
+*/
 
     public String getPName() {
         return PName;
@@ -67,6 +73,20 @@ public class ProjectData {
         this.budget = budget;
     }
 
+    public int getAdditionalCost(int interval) {
+        return additionalCosts.get(interval);
+    }
+
+    public void setAdditionalCost(int additionalCost) {
+        this.additionalCost = additionalCost;
+    }
+
+
+    public void setAdditionalCosts(ArrayList<Integer> additionalCosts) {
+        this.additionalCosts = additionalCosts;
+    }
+
+    /*
     public int getAdditionalCostQ1(){ return additionalCostQ1; }
 
     public void setAdditionalCostQ1(int additionalCostQ1){ this.additionalCostQ1 = additionalCostQ1; }
@@ -82,4 +102,5 @@ public class ProjectData {
     public int getAdditionalCostQ4(){ return additionalCostQ4; }
 
     public void setAdditionalCostQ4(int additionalCostQ4){ this.additionalCostQ4 = additionalCostQ4; }
+    */
 }
