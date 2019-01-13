@@ -17,6 +17,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class GUI extends Application {
 
     ImportJSON importMemeberJSON = new ImportJSON();
@@ -132,7 +134,11 @@ public class GUI extends Application {
             @Override
             public void handle(ActionEvent event) {
 
-                showScheduleVariance();
+                try {
+                    showScheduleVariance();
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -175,8 +181,60 @@ public class GUI extends Application {
         // TODO
     }
 
-    public void showScheduleVariance(){
-        // TODO
+    public void showScheduleVariance() throws Exception{
+        // A new window
+        final Stage window = new Stage();
+        window.setTitle("Schedule Variance");
+        //window.setMinHeight(600);
+        //window.setMinWidth(400);
+
+        Variance var = new Variance();
+        int weeks = var.getWeeks();
+        double maxYMargin = 1.2;
+        double maxY = var.getEV(weeks) * maxYMargin;
+        Label label = new Label("Schedule Variance:");
+
+        //Defining the x axis
+        NumberAxis xAxis = new NumberAxis (0, weeks, 2);
+        xAxis.setLabel("Time in weeks");
+
+
+        //Defining the y axis
+        NumberAxis yAxis = new NumberAxis  (0, maxY, 100000);
+        yAxis.setLabel("Cost in SEK");
+
+        //Creating the line chart
+        LineChart linechart = new LineChart(xAxis, yAxis);
+
+
+        //Prepare XYChart.Series objects by setting data
+        XYChart.Series series = new XYChart.Series();
+        series.setName("PV");
+
+        XYChart.Series series2 = new XYChart.Series();
+        series2.setName("EV");
+
+        int XInterval = 0;
+        ArrayList<Double> SVValues = var.getSV();
+        for (int i = 0; i < SVValues.size(); i= i+0){
+            series.getData().add(new XYChart.Data(XInterval, SVValues.get(i)));
+            System.out.println(SVValues.get(i));
+            i ++;
+            series2.getData().add(new XYChart.Data(XInterval, SVValues.get(i)));
+            System.out.println(SVValues.get(i));
+            i ++;
+            XInterval += 2;
+
+        }
+
+        linechart.getData().addAll(series,series2);
+
+        //Creating a Group object
+        Group root = new Group(linechart);
+
+        Scene scene = new Scene(root, 600, 400);
+        window.setScene(scene);
+        window.show();
     }
 
     public void showCostVariance(){
