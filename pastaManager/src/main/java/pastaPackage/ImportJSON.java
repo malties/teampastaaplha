@@ -81,7 +81,7 @@ public class ImportJSON {
                         "Salary (per hour): SEK " + teamMember.getSalaryPerHour() + newLine +
                         "Current project: " + teamMember.getProject() + newLine +
                         "Work hours (per week): " + teamMember.getHoursPerWeek() + newLine +
-                        "Number of working weeks: " + teamMember.getWeeks() + newLine + newLine;
+                        "Total work hours: " + teamMember.getWeeks() * teamMember.getHoursPerWeek() + newLine + newLine;
             }
         }else{
             data = "No team members";
@@ -96,19 +96,21 @@ public class ImportJSON {
         int totalHours = 0;
         int actualCostPerWeek = 0;
         int actualCost = 0;
+        String participantsInfo = "";
         if(!teamMembers.isEmpty()){
             for (TeamMemberData teamMember: teamMembers) {
                 hoursPerWeek += teamMember.getHoursPerWeek();
                 totalHours += teamMember.getHoursPerWeek() * teamMember.getWeeks();
                 actualCostPerWeek += teamMember.getHoursPerWeek() * teamMember.getSalaryPerHour();
                 actualCost += teamMember.getHoursPerWeek() * teamMember.getSalaryPerHour() * teamMember.getWeeks();
+                participantsInfo += " - " + teamMember.getName() + ": "
+                        + teamMember.getHoursPerWeek() * teamMember.getWeeks() + "h" + newLine;
             }
-            data =  "Project name: " + teamMembers.get(1).getProject() + newLine +
-                    "Number of members: " + teamMembers.size() + newLine +
-                    "Total project hours (per week): " + hoursPerWeek + newLine +
-                    "Total project hours: " + totalHours + newLine +
+            data =  "Total project hours (per week): " + hoursPerWeek + " hours" + newLine +
+                    "Total project hours: " + totalHours + " hours" + newLine +
                     "Actual Cost of project (per week): " + actualCostPerWeek + " sek" + newLine +
-                    "Actual Cost of project: " + actualCost + " sek";
+                    "Actual Cost of project: " + actualCost + " sek" + newLine +
+                    "Participants hours spent: " + newLine + participantsInfo;
         }else{
             data = "No projects";
         }

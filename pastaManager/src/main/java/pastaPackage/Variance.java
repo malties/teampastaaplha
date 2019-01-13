@@ -2,11 +2,17 @@ package pastaPackage;
 
 public class Variance {
 
+    public Variance(int week, int year){
+        this.week = week;
+        this.year = year;
+    }
+
     private ImportJSON jsonForCalcs = new ImportJSON();
     private ImportProjectJSON jsonPDataForCalcs = new ImportProjectJSON();
+    private int week;
+    private int year;
 
-    public double actualSpent(){
-        double additionalCosts = UserInput.readDouble("Please add unplanned additional costs here");
+    public double actualSpent(int additionalCosts){
         int salaries = jsonForCalcs.getTeamSalaries();
         return additionalCosts + salaries;
     }
@@ -36,9 +42,9 @@ public class Variance {
         int currentYear = 0;
         if(! ((lastWeek > firstWeek && (lastYear - firstYear) == 0) ||
                 (lastWeek < firstWeek && (lastYear - firstYear) == 1) )) {
-            currentYear = UserInput.readInt("What Year is this?");
+            currentYear = year;
         }
-        int currentWeek = UserInput.readInt("What week is this?");
+        int currentWeek = week;
         if ( (currentYear - firstYear) != 0) {
             currentWeek += (currentYear - firstYear) * 52;
         }
@@ -57,8 +63,18 @@ public class Variance {
         return calculateEV() + plannedSpent();
     }
 
-    public double calculateCV(){
-        return  calculateEV() + actualSpent();
+    // quartile should be 1 to 4
+    public double calculateCV(int quartile){
+        if(quartile == 1){
+            return  calculateEV() + actualSpent(jsonPDataForCalcs.getAdditionalCostQ1());
+        }else if(quartile == 2){
+            return  calculateEV() + actualSpent(jsonPDataForCalcs.getAdditionalCostQ1() + jsonPDataForCalcs.getAdditionalCostQ2());
+        }else if(quartile == 3){
+            return  calculateEV() + actualSpent(jsonPDataForCalcs.getAdditionalCostQ1() + jsonPDataForCalcs.getAdditionalCostQ2() + jsonPDataForCalcs.getAdditionalCostQ3());
+        }else if(quartile == 4){
+            return  calculateEV() + actualSpent(jsonPDataForCalcs.getAdditionalCostQ1() + jsonPDataForCalcs.getAdditionalCostQ2() + jsonPDataForCalcs.getAdditionalCostQ3() + jsonPDataForCalcs.getAdditionalCostQ4());
+        }
+        return 0.0;
     }
 
 

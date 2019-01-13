@@ -18,30 +18,59 @@ public class ImportProjectJSON {
     }
 
     public JsonObject getJsonPData() throws  Exception {
+
         Gson gson = new Gson();
         File file = new File(PROJECT_JSON_FILE);
+
         JsonReader br = new JsonReader(new FileReader(file));
+
         JsonObject jsonPData = gson.fromJson(br, JsonObject.class);
+        JsonObject pData = jsonPData.getAsJsonObject("Project");
+
         br.close();
-        return jsonPData;
+        return pData;
     }
 
-    public void addTeamMembers(JsonObject jsonPData){
+    public void addProjectInformation(JsonObject jsonPData){
+
+        ProjectData projData = new ProjectData();
 
         String jsonName = jsonPData.get("PName").getAsString();
-        projectData.setPName(jsonName);
+        projData.setPName(jsonName);
         String jsonPId = jsonPData.get("PId").getAsString();
-        projectData.setPId(jsonPId);
+        projData.setPId(jsonPId);
         int jsonStartWeek = jsonPData.get("startWeek").getAsInt();
-        projectData.setStartWeek(jsonStartWeek);
+        projData.setStartWeek(jsonStartWeek);
         int jsonEndWeek = jsonPData.get("endWeek").getAsInt();
-        projectData.setEndWeek(jsonEndWeek);
+        projData.setEndWeek(jsonEndWeek);
         double jsonBudget = jsonPData.get("budget").getAsDouble();
-        projectData.setBudget(jsonBudget);
+        projData.setBudget(jsonBudget);
         int jsonStartYear = jsonPData.get("startYear").getAsInt();
-        projectData.setStartYear(jsonStartYear);
+        projData.setStartYear(jsonStartYear);
         int jsonEndYear = jsonPData.get("endYear").getAsInt();
-        projectData.setEndYear(jsonEndYear);
+        projData.setEndYear(jsonEndYear);
+        int jsonAdditionalCostQ1 = jsonPData.get("ACQ1").getAsInt();
+        projData.setAdditionalCostQ1(jsonAdditionalCostQ1);
+        int jsonAdditionalCostQ2 = jsonPData.get("ACQ2").getAsInt();
+        projData.setAdditionalCostQ2(jsonAdditionalCostQ2);
+        int jsonAdditionalCostQ3 = jsonPData.get("ACQ3").getAsInt();
+        projData.setAdditionalCostQ3(jsonAdditionalCostQ3);
+        int jsonAdditionalCostQ4 = jsonPData.get("ACQ4").getAsInt();
+        projData.setAdditionalCostQ4(jsonAdditionalCostQ4);
+
+        this.projectData = projData;
+    }
+
+    public String getProjectData(){
+        String data = "";
+        String newLine = System.getProperty("line.separator");
+        if(projectData != null){
+            data =  "Project name: " + projectData.getPName() + newLine +
+                    "Start: week " + projectData.getStartWeek() + " year " + projectData.getStartYear() + newLine +
+                    "End: week " + projectData.getEndWeek() + " year " + projectData.getEndYear() + newLine;
+
+        }
+        return data;
     }
 
     public int getStartWeek(){
@@ -63,5 +92,13 @@ public class ImportProjectJSON {
     public double getBudget(){
         return projectData.getBudget();
     }
+
+    public int getAdditionalCostQ1(){ return projectData.getAdditionalCostQ1(); }
+
+    public int getAdditionalCostQ2(){ return projectData.getAdditionalCostQ2(); }
+
+    public int getAdditionalCostQ3(){ return projectData.getAdditionalCostQ3(); }
+
+    public int getAdditionalCostQ4(){ return projectData.getAdditionalCostQ4(); }
 
 }

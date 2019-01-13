@@ -19,12 +19,16 @@ import javafx.stage.Stage;
 
 public class GUI extends Application {
 
-    ImportJSON importJSON = new ImportJSON();
+    ImportJSON importMemeberJSON = new ImportJSON();
+    ImportProjectJSON importProjectJSON = new ImportProjectJSON();
     Button searchButton;
     Button importButton;
     Button printAllButton;
     Button printProject;
+    Button earnedValueButton;
+    Button scheduleVarianceButton;
     Button costVarianceButton;
+    Button riskMatrixButton;
 
     public static void main(String[] args) {
 
@@ -99,6 +103,17 @@ public class GUI extends Application {
             }
         });
 
+        // Opens Risk Matrix window
+        Label rmLabel = new Label("Risk Matrix");
+        riskMatrixButton = new Button("Risk Matrix");
+        riskMatrixButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                showRiskMatrix();
+            }
+        });
+
         // Opens Cost Variance window
         Label cvLabel = new Label("Cost Variance");
         costVarianceButton = new Button("Cost Variance");
@@ -110,9 +125,32 @@ public class GUI extends Application {
             }
         });
 
+        // Opens Schedule Variance window
+        Label svLabel = new Label("Schedule Variance");
+        scheduleVarianceButton = new Button("Schedule Variance");
+        scheduleVarianceButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                showScheduleVariance();
+            }
+        });
+
+        // Opens Earned Value window
+        Label evLabel = new Label("Earned Value");
+        earnedValueButton = new Button("Earned Value");
+        earnedValueButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                showEarnedValue();
+            }
+        });
+
         VBox layout = new VBox(20);
         layout.getChildren().addAll(importLabel, importButton, printAllLabel, printAllButton,
-                printProjectLabel, printProject, searchLabel, searchButton, cvLabel, costVarianceButton);
+                printProjectLabel, printProject, searchLabel, searchButton, rmLabel, riskMatrixButton,
+                evLabel, earnedValueButton, svLabel, scheduleVarianceButton, cvLabel, costVarianceButton);
         layout.setAlignment(Pos.TOP_CENTER);
         layout.setSpacing(20);
 
@@ -124,15 +162,20 @@ public class GUI extends Application {
 
     public void importJSON() throws Exception{
 
-        importJSON.addTeamMembers(importJSON.getJsonArray());
+        importMemeberJSON.addTeamMembers(importMemeberJSON.getJsonArray());
+        importProjectJSON.addProjectInformation(importProjectJSON.getJsonPData());
 
     }
 
-    public void showEarnedVariance(){
+    public void showRiskMatrix(){
         // TODO
     }
 
-    public void showScheduceVariance(){
+    public void showEarnedValue(){
+        // TODO
+    }
+
+    public void showScheduleVariance(){
         // TODO
     }
 
@@ -200,7 +243,7 @@ public class GUI extends Application {
 
         Label label = new Label("All team members:");
         Text text = new Text();
-        text.setText(importJSON.printTeamMemberData());
+        text.setText(importMemeberJSON.printTeamMemberData());
 
 
         // Adds elements to window
@@ -224,7 +267,7 @@ public class GUI extends Application {
 
         Label label = new Label("Project Information:");
         Text text = new Text();
-        text.setText(importJSON.printProjectData());
+        text.setText(importProjectJSON.getProjectData() + importMemeberJSON.printProjectData());
 
         // Adds elements to window
         VBox layout = new VBox(20);
@@ -262,7 +305,7 @@ public class GUI extends Application {
                 try {
                     id = Integer.parseInt(input.getText());
 
-                    text.setText(importJSON.search(id));
+                    text.setText(importMemeberJSON.search(id));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
