@@ -12,10 +12,15 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.io.FileInputStream;
 
 public class GUI extends Application {
 
@@ -168,7 +173,22 @@ public class GUI extends Application {
     }
 
     public void showRiskMatrix(){
-        // TODO
+
+
+        final Stage window = new Stage();
+        window.setTitle("Risk Matrix");
+
+
+        ImageView iv = new ImageView();
+        Image riskMatix = new Image("riskMatrix.PNG");
+        iv.setImage(riskMatix);
+
+        VBox layout = new VBox();
+        layout.getChildren().add(iv);
+
+        Scene scene = new Scene(layout);
+        window.setScene(scene);
+        window.show();
     }
 
     public void showEarnedValue(){

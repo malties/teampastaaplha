@@ -24,7 +24,14 @@ public class Variance {
         return allSalaries;
     }
 
-    public int calculateTotalWeeks(){
+    public int calculateTotalWeeks() {
+
+        try {
+            importJSON();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         // calculate total number of weeks difference from start to end of project
         int firstWeek = jsonPDataForCalcs.getStartWeek();
         int lastWeek = jsonPDataForCalcs.getEndWeek();
@@ -114,4 +121,10 @@ public class Variance {
     }
     */
 
+    public void importJSON() throws Exception{
+
+        jsonForCalcs.addTeamMembers(jsonForCalcs.getJsonArray());
+        jsonPDataForCalcs.addProjectInformation(jsonPDataForCalcs.getJsonPData());
+
+    }
 }
