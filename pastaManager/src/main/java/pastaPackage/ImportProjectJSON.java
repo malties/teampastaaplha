@@ -111,7 +111,7 @@ public class ImportProjectJSON {
         return projectData.getBudget();
     }
 
-    public int getAdditionalCost(int interval){
+    public double getAdditionalCost(double interval){
         return projectData.getAdditionalCost(interval);
     }
 

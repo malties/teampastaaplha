@@ -124,8 +124,11 @@ public class GUI extends Application {
         costVarianceButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
+                try {
                 showCostVariance();
+                } catch(Exception e){
+                    e.getStackTrace();
+                }
             }
         });
 
@@ -200,8 +203,6 @@ public class GUI extends Application {
         // A new window
         final Stage window = new Stage();
         window.setTitle("Schedule Variance");
-        //window.setMinHeight(600);
-        //window.setMinWidth(400);
 
         Variance var = new Variance();
         double weeks = var.getWeeks();
@@ -226,48 +227,53 @@ public class GUI extends Application {
         XYChart.Series series = new XYChart.Series();
         series.setName("PV");
 
-        XYChart.Series series2 = new XYChart.Series();
-        series2.setName("EV");
+        XYChart.Series series1 = new XYChart.Series();
+        series1.setName("EV");
 
         int XInterval = 0;
         ArrayList<Double> SVValues = var.getSV();
         for (int i = 0; i < SVValues.size(); i= i+0){
             series.getData().add(new XYChart.Data(XInterval, SVValues.get(i)));
-            System.out.println(SVValues.get(i));
+
             i ++;
-            series2.getData().add(new XYChart.Data(XInterval, SVValues.get(i)));
-            System.out.println(SVValues.get(i));
+            series1.getData().add(new XYChart.Data(XInterval, SVValues.get(i)));
+
             i ++;
             XInterval += 2;
 
         }
 
-        linechart.getData().addAll(series,series2);
+        linechart.getData().addAll(series,series1);
 
         //Creating a Group object
         Group root = new Group(linechart);
 
+        //window.setMinHeight(600);
+        //window.setMinWidth(400);
         Scene scene = new Scene(root, 600, 400);
         window.setScene(scene);
         window.show();
     }
 
-    public void showCostVariance(){
-
+    public void showCostVariance()throws Exception{
         // A new window
         final Stage window = new Stage();
         window.setTitle("Cost Variance");
-        //window.setMinHeight(600);
-        //window.setMinWidth(400);
 
+
+        Variance var = new Variance();
+        double weeks = var.getWeeks();
+        double maxYMargin = 1.2;
+        double maxY = var.getEV(weeks) * maxYMargin;
         Label label = new Label("Cost Variance:");
 
         //Defining the x axis
-        NumberAxis xAxis = new NumberAxis (0, 8, 2);
+        NumberAxis xAxis = new NumberAxis (0, weeks, 2);
         xAxis.setLabel("Time in weeks");
 
+
         //Defining the y axis
-        NumberAxis yAxis = new NumberAxis  (100000, 800000, 100000);
+        NumberAxis yAxis = new NumberAxis  (0, maxY, 10000);
         yAxis.setLabel("Cost in SEK");
 
         //Creating the line chart
@@ -275,33 +281,32 @@ public class GUI extends Application {
 
 
         //Prepare XYChart.Series objects by setting data
-        XYChart.Series series = new XYChart.Series();
-        series.setName("EV");
-
-
-        series.getData().add(new XYChart.Data(0, 200000));
-        series.getData().add(new XYChart.Data(2, 300000));
-        series.getData().add(new XYChart.Data(4, 400000));
-        series.getData().add(new XYChart.Data(6, 400000));
-        series.getData().add(new XYChart.Data(8, 500000));
-
-
         XYChart.Series series2 = new XYChart.Series();
         series2.setName("AC");
 
-        series2.getData().add(new XYChart.Data(0, 100000));
-        series2.getData().add(new XYChart.Data(2, 200000));
-        series2.getData().add(new XYChart.Data(4, 300000));
-        series2.getData().add(new XYChart.Data(6, 300000));
-        series2.getData().add(new XYChart.Data(8, 400000));
+        XYChart.Series series3 = new XYChart.Series();
+        series3.setName("EV");
 
-        //Setting the data to Line chart
-        linechart.getData().addAll(series,series2);
+        int XInterval = 0;
+        ArrayList<Double> CVValues = var.getCV();
+        for (int i = 0; i < CVValues.size(); i= i+0){
+            series2.getData().add(new XYChart.Data(XInterval, CVValues.get(i)));
 
+            i ++;
+            series3.getData().add(new XYChart.Data(XInterval, CVValues.get(i)));
+
+            i ++;
+            XInterval += 2;
+
+        }
+
+        linechart.getData().addAll(series2,series3);
 
         //Creating a Group object
         Group root = new Group(linechart);
 
+        //window.setMinHeight(600);
+        //window.setMinWidth(400);
         Scene scene = new Scene(root, 600, 400);
         window.setScene(scene);
         window.show();
@@ -319,7 +324,7 @@ public class GUI extends Application {
         text.setText(importMemeberJSON.printTeamMemberData());
 
 
-        // Adds elements to window
+        // Add elements to window
         VBox layout = new VBox(20);
         layout.getChildren().addAll(label, text);
         layout.setAlignment(Pos.TOP_CENTER);

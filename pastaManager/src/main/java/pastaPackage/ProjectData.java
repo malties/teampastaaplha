@@ -12,7 +12,7 @@ public class ProjectData {
     private int endYear;
     private double budget;
     private ArrayList<Integer> additionalCosts;
-    private int additionalCost;
+    private double additionalCost;
 
     /*
     private int additionalCostQ1;
@@ -73,14 +73,17 @@ public class ProjectData {
         this.budget = budget;
     }
 
-    public int getAdditionalCost(int interval) {
-        return additionalCosts.get(interval);
+    public double getAdditionalCost(double interval) {
+        return this.additionalCost;
     }
 
     public void setAdditionalCost(int additionalCost) {
         this.additionalCost = additionalCost;
     }
 
+    public ArrayList<Integer> getAdditionalCosts() {
+        return additionalCosts;
+    }
 
     public void setAdditionalCosts(ArrayList<Integer> additionalCosts) {
         this.additionalCosts = additionalCosts;

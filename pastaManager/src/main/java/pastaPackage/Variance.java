@@ -11,29 +11,26 @@ public class Variance {
     private ImportProjectJSON jsonPDataForCalcs = new ImportProjectJSON();
 
 
-    private int week;
-    private int year;
-
-    public double actualSpent(int week){
+    public double actualSpent(double week){
         double salaries = plannedSpent(week);
-        int additionalCosts = jsonPDataForCalcs.getAdditionalCost(week/2);
-        return  salaries;
+        double additionalCosts = jsonPDataForCalcs.getAdditionalCost(week/2);
+        return  salaries + additionalCosts;
     }
 
-    public double plannedSpent(int weeks){
-        int allSalaries = jsonForCalcs.getTeamSalaries();
+    public double plannedSpent(double weeks){
+        double allSalaries = jsonForCalcs.getTeamSalaries();
         allSalaries = allSalaries * (weeks/calculateTotalWeeks());
         return allSalaries;
     }
 
-    public int calculateTotalWeeks(){
+    public double calculateTotalWeeks(){
         // calculate total number of weeks difference from start to end of project
         int firstWeek = jsonPDataForCalcs.getStartWeek();
         int lastWeek = jsonPDataForCalcs.getEndWeek();
         int firstYear = jsonPDataForCalcs.getStartYear();
         int lastYear = jsonPDataForCalcs.getEndYear();
         final int WEEKS_IN_YEAR = 52;
-        int totalWeeks;
+        double totalWeeks;
         if (lastWeek > firstWeek) {
             totalWeeks = lastWeek - firstWeek;
             totalWeeks += (lastYear - firstYear) * 52;
@@ -87,7 +84,10 @@ public class Variance {
         return calculateEV(weeks);
     }
 
-    public ArrayList<Double> getCV(){
+    public ArrayList<Double> getCV()throws Exception{
+
+        jsonPDataForCalcs.addProjectInformation(jsonPDataForCalcs.getJsonPData());
+        jsonForCalcs.addTeamMembers(jsonForCalcs.getJsonArray());
         ArrayList <Double> CV = new ArrayList<>();
         for ( int i = 0; i <= calculateTotalWeeks(); i = i+2){
             CV.add(actualSpent(i));
