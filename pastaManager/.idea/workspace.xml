@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7a725f1-dc34-4b3d-a1dc-cebf91b6c31e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pastaPackage/Variance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pastaPackage/Variance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ProjectData.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ProjectData.json" afterDir="false" />
-    </list>
+    <list default="true" id="f7a725f1-dc34-4b3d-a1dc-cebf91b6c31e" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -118,15 +113,6 @@
                 <element signature="e#10345#10508#0" expanded="true" />
                 <element signature="e#10507#10508#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../../../../../SDKs/jdk1.8.0_191/javafx-src.zip!/javafx/scene/chart/XYChart.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="1598" column="58" selection-start-line="1598" selection-start-column="58" selection-end-line="1598" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -281,7 +267,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547396119598" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547396126790" />
     <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/TeamPastaAlphaFX" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -339,7 +325,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39298000" />
+    <option name="totallyTimeSpent" value="39539000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="57" y="25" width="1863" height="1055" extended-state="6" />
