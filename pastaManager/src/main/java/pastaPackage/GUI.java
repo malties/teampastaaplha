@@ -200,7 +200,7 @@ public class GUI extends Application {
 
 
         //Defining the y axis
-        NumberAxis yAxis = new NumberAxis  (0, maxY, 100000);
+        NumberAxis yAxis = new NumberAxis  (0, 100000, 10000);
         yAxis.setLabel("Cost in SEK");
 
         //Creating the line chart
