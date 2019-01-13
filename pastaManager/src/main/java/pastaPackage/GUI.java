@@ -189,7 +189,7 @@ public class GUI extends Application {
         //window.setMinWidth(400);
 
         Variance var = new Variance();
-        int weeks = var.getWeeks();
+        double weeks = var.getWeeks();
         double maxYMargin = 1.2;
         double maxY = var.getEV(weeks) * maxYMargin;
         Label label = new Label("Schedule Variance:");

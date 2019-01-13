@@ -67,10 +67,10 @@ public class Variance {
     }
 */
 
-    public double calculateEV(int currentWeek){
+    public double calculateEV(double currentWeek){
 
         //int currentWeek = getCurrentWeek();
-        int totalWeeks = calculateTotalWeeks();
+        double totalWeeks = calculateTotalWeeks();
 
         //calculate % completion
         double completion = currentWeek/totalWeeks;
@@ -82,7 +82,7 @@ public class Variance {
         return EV;
     }
 
-    public double getEV(int weeks) throws Exception{
+    public double getEV(double weeks) throws Exception{
         jsonPDataForCalcs.addProjectInformation(jsonPDataForCalcs.getJsonPData());
         return calculateEV(weeks);
     }
@@ -111,7 +111,7 @@ public class Variance {
         return SV;
     }
 
-    public int getWeeks()throws Exception{
+    public double getWeeks()throws Exception{
         jsonPDataForCalcs.addProjectInformation(jsonPDataForCalcs.getJsonPData());
         jsonForCalcs.addTeamMembers(jsonForCalcs.getJsonArray());
         return calculateTotalWeeks();
