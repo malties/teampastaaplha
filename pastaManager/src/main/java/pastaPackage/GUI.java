@@ -154,7 +154,11 @@ public class GUI extends Application {
             @Override
             public void handle(ActionEvent event) {
 
-                showEarnedValue();
+                try {
+                    showEarnedValue();
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -195,8 +199,57 @@ public class GUI extends Application {
         window.show();
     }
 
-    public void showEarnedValue(){
-        // TODO
+    public void showEarnedValue()throws Exception{
+        // A new window
+        final Stage window = new Stage();
+        window.setTitle("Earned Value");
+
+
+        Variance var = new Variance();
+        double weeks = var.getWeeks();
+        double maxYMargin = 1.2;
+        double maxY = var.getEV(weeks) * maxYMargin;
+        Label label = new Label("Earned Value:");
+
+        //Defining the x axis
+        NumberAxis xAxis = new NumberAxis (0,8,2);
+        xAxis.setLabel("Time in weeks");
+
+
+        //Defining the y axis
+        NumberAxis yAxis = new NumberAxis  (0, maxY, 50000);
+        yAxis.setLabel("Cost in SEK");
+
+        //Creating the line chart
+        LineChart linechart = new LineChart(xAxis, yAxis);
+
+
+        //Prepare XYChart.Series objects by setting data
+        XYChart.Series ActualCost = new XYChart.Series();
+        ActualCost.setName("AC");
+
+
+
+
+        XYChart.Series EarnedValue = new XYChart.Series();
+        EarnedValue.setName("EV");
+
+        for (int i = -1 ; i<var.getWeeks();i=i+2){
+            EarnedValue.getData().add(new XYChart.Data(i+1,var.calculateEV(i+1)));
+            ActualCost.getData().add(new XYChart.Data(i+1,var.actualSpent(i+1)));
+        }
+
+
+        linechart.getData().addAll(ActualCost,EarnedValue);
+
+        //Creating a Group object
+        Group root = new Group(linechart);
+
+        //window.setMinHeight(600);
+        //window.setMinWidth(400);
+        Scene scene = new Scene(root, 600, 400);
+        window.setScene(scene);
+        window.show();
     }
 
     public void showScheduleVariance() throws Exception{
