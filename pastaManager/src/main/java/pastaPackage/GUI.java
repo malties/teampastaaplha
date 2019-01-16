@@ -29,13 +29,11 @@ import java.util.ArrayList;
 
 public class GUI extends Application {
 
-    public ImportJSON importMemeberJSON = new ImportJSON();
-    public ImportProjectJSON importProjectJSON = new ImportProjectJSON();
+    private ImportJSON importMemeberJSON = new ImportJSON();
+    private ImportProjectJSON importProjectJSON = new ImportProjectJSON();
+    private Image matrix;
 
     public static void main(String[] args) {
-
-
-
 
         launch(args);
     }
@@ -113,7 +111,9 @@ public class GUI extends Application {
             @Override
             public void handle(ActionEvent event) {
 
-                showRiskMatrix();
+                if(matrix != null){
+                    showRiskMatrix(matrix);
+                }
             }
         });
 
@@ -170,22 +170,13 @@ public class GUI extends Application {
 
     }
 
-    /*
-    private void importJSON() throws Exception{
-
-        importMemeberJSON.addTeamMembers(importMemeberJSON.getJsonArray());
-        importProjectJSON.addProjectInformation(importProjectJSON.getJsonPData());
-
-    }
-    */
-
-    private void showRiskMatrix(){
+    private void showRiskMatrix(Image image){
         final Stage window = new Stage();
         window.setTitle("Risk Matrix");
 
 
         ImageView iv = new ImageView();
-        Image riskMatix = new Image("riskMatrix.PNG");
+        Image riskMatix = image;
         iv.setImage(riskMatix);
 
         VBox layout = new VBox();
@@ -203,20 +194,31 @@ public class GUI extends Application {
         window.setMinHeight(300);
         window.setMinWidth(300);
 
-        Label memberJsonLabel = new Label("Import JSON with member data: ");
-        Button memberJsonButton = new Button("Select file");
+        Label memberJsonLabel = new Label("Import JSON with member data:");
+        Button memberJsonButton = new Button("Select a file");
 
-        Label projectJsonLabel = new Label("Import JSON with project data: ");
-        Button projectJsonButton = new Button("Select file");
+        Label projectJsonLabel = new Label("Import JSON with project data:");
+        Button projectJsonButton = new Button("Select a file");
 
-        final FileChooser chooser = new FileChooser();
-        chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON", "*.json"));
+        Label matrixLabel = new Label("Import risk matrix:");
+        Button matrixButton = new Button("Select an image");
+
+        final FileChooser jsonChooser = new FileChooser();
+        jsonChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON", "*.json"));
+
+        final FileChooser matrixChooser = new FileChooser();
+        matrixChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("PNG", "*.png"),
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("JPEG", "*.jpeg"),
+                new FileChooser.ExtensionFilter("BMP", "*.bmp")
+                );
 
         memberJsonButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
 
-                File file = chooser.showOpenDialog(window);
+                File file = jsonChooser.showOpenDialog(window);
                 if(file != null){
                     openMemberFile(file);
                 }
@@ -228,9 +230,21 @@ public class GUI extends Application {
             @Override
             public void handle(ActionEvent event) {
 
-                File file = chooser.showOpenDialog(window);
+                File file = jsonChooser.showOpenDialog(window);
                 if(file != null){
                     openProjectFile(file);
+                }
+
+            }
+        });
+
+        matrixButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                File file = matrixChooser.showOpenDialog(window);
+                if(file != null){
+                    openMatrixFile(file);
                 }
 
             }
@@ -242,6 +256,8 @@ public class GUI extends Application {
         layout.getChildren().addAll(memberJsonButton);
         layout.getChildren().addAll(projectJsonLabel);
         layout.getChildren().addAll(projectJsonButton);
+        layout.getChildren().addAll(matrixLabel);
+        layout.getChildren().addAll(matrixButton);
 
         Scene scene = new Scene(layout);
         window.setScene(scene);
@@ -264,6 +280,10 @@ public class GUI extends Application {
         }catch(Exception e){
 
         }
+    }
+
+    private void openMatrixFile(File file){
+        this.matrix = new Image(file.toURI().toString());
     }
 
     private void showEarnedValue(){
@@ -481,11 +501,4 @@ public class GUI extends Application {
 
      }
 
-    public ImportJSON getImportMemeberJSON() {
-        return importMemeberJSON;
-    }
-
-    public ImportProjectJSON getImportProjectJSON() {
-        return importProjectJSON;
-    }
 }
