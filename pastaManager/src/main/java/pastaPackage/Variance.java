@@ -1,10 +1,13 @@
 package pastaPackage;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class Variance {
 
-    public Variance(){
+    public Variance(File memberJson, File projectJson){
+        this.jsonForCalcs.setJsonFile(memberJson);
+        this.jsonPDataForCalcs.setJsonFile(projectJson);
     }
 
     private ImportJSON jsonForCalcs = new ImportJSON();

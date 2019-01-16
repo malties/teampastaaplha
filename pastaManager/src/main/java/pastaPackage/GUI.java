@@ -1,5 +1,6 @@
 package pastaPackage;
 
+import com.sun.java.swing.action.AlignCenterAction;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,22 +18,19 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class GUI extends Application {
 
-    ImportJSON importMemeberJSON = new ImportJSON();
-    ImportProjectJSON importProjectJSON = new ImportProjectJSON();
-    Button searchButton;
-    Button importButton;
-    Button printAllButton;
-    Button printProject;
-    Button earnedValueButton;
-    Button scheduleVarianceButton;
-    Button costVarianceButton;
-    Button riskMatrixButton;
+    public ImportJSON importMemeberJSON = new ImportJSON();
+    public ImportProjectJSON importProjectJSON = new ImportProjectJSON();
 
     public static void main(String[] args) {
 
@@ -42,17 +40,14 @@ public class GUI extends Application {
         launch(args);
     }
 
-    Stage stage;
-    Scene homeScene;
-
     @Override
     public void start(Stage primaryStage) {
 
-        stage = primaryStage;
+        Stage stage = primaryStage;
 
         StackPane homeLayout = new StackPane();
 
-        homeScene = new Scene(homeLayout, 1280, 1000);
+        Scene homeScene = new Scene(homeLayout, 1280, 1000);
 
         stage.setScene(homeScene);
         stage.setTitle("Pasta Manager");
@@ -60,23 +55,27 @@ public class GUI extends Application {
 
         // Imports JSON file
         Label importLabel = new Label("Import JSON file");
-        importButton = new Button("Import");
+        Button importButton = new Button("Import");
         importButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
 
+                showImportWindow();
+
+                /*
                 try {
                     importJSON();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                */
 
             }
         });
 
         // Prints all team members' information
         Label printAllLabel = new Label("View all team member's data");
-        printAllButton = new Button("Show All Members");
+        Button printAllButton = new Button("Show All Members");
         printAllButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -87,18 +86,18 @@ public class GUI extends Application {
 
         // Prints project information
         Label printProjectLabel = new Label("View project information");
-        printProject = new Button("Show project information");
+        Button printProject = new Button("Show project information");
         printProject.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
 
-                printProjectInformation();
+                showProjectInformation();
             }
         });
 
         // Search for team member information
         Label searchLabel = new Label("Search for team member information");
-        searchButton = new Button("Search team member data");
+        Button searchButton = new Button("Search team member data");
         searchButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -109,7 +108,7 @@ public class GUI extends Application {
 
         // Opens Risk Matrix window
         Label rmLabel = new Label("Risk Matrix");
-        riskMatrixButton = new Button("Risk Matrix");
+        Button riskMatrixButton = new Button("Risk Matrix");
         riskMatrixButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -120,7 +119,7 @@ public class GUI extends Application {
 
         // Opens Cost Variance window
         Label cvLabel = new Label("Cost Variance");
-        costVarianceButton = new Button("Cost Variance");
+        Button costVarianceButton = new Button("Cost Variance");
         costVarianceButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -134,7 +133,7 @@ public class GUI extends Application {
 
         // Opens Schedule Variance window
         Label svLabel = new Label("Schedule Variance");
-        scheduleVarianceButton = new Button("Schedule Variance");
+        Button scheduleVarianceButton = new Button("Schedule Variance");
         scheduleVarianceButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -149,7 +148,7 @@ public class GUI extends Application {
 
         // Opens Earned Value window
         Label evLabel = new Label("Earned Value");
-        earnedValueButton = new Button("Earned Value");
+        Button earnedValueButton = new Button("Earned Value");
         earnedValueButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -171,14 +170,16 @@ public class GUI extends Application {
 
     }
 
-    public void importJSON() throws Exception{
+    /*
+    private void importJSON() throws Exception{
 
         importMemeberJSON.addTeamMembers(importMemeberJSON.getJsonArray());
         importProjectJSON.addProjectInformation(importProjectJSON.getJsonPData());
 
     }
+    */
 
-    public void showRiskMatrix(){
+    private void showRiskMatrix(){
         final Stage window = new Stage();
         window.setTitle("Risk Matrix");
 
@@ -195,16 +196,86 @@ public class GUI extends Application {
         window.show();
     }
 
-    public void showEarnedValue(){
+    private void showImportWindow(){
+        // A new window
+        final Stage window = new Stage();
+        window.setTitle("Import Files");
+        window.setMinHeight(300);
+        window.setMinWidth(300);
+
+        Label memberJsonLabel = new Label("Import JSON with member data: ");
+        Button memberJsonButton = new Button("Select file");
+
+        Label projectJsonLabel = new Label("Import JSON with project data: ");
+        Button projectJsonButton = new Button("Select file");
+
+        final FileChooser chooser = new FileChooser();
+        chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON", "*.json"));
+
+        memberJsonButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                File file = chooser.showOpenDialog(window);
+                if(file != null){
+                    openMemberFile(file);
+                }
+
+            }
+        });
+
+        projectJsonButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                File file = chooser.showOpenDialog(window);
+                if(file != null){
+                    openProjectFile(file);
+                }
+
+            }
+        });
+
+        VBox layout = new VBox(20);
+        layout.setAlignment(Pos.CENTER);
+        layout.getChildren().addAll(memberJsonLabel);
+        layout.getChildren().addAll(memberJsonButton);
+        layout.getChildren().addAll(projectJsonLabel);
+        layout.getChildren().addAll(projectJsonButton);
+
+        Scene scene = new Scene(layout);
+        window.setScene(scene);
+        window.show();
+    }
+
+    private void openMemberFile(File file){
+        importMemeberJSON.setJsonFile(file);
+        try{
+            importMemeberJSON.addTeamMembers(importMemeberJSON.getJsonArray());
+        }catch (Exception e){
+
+        }
+    }
+
+    private void openProjectFile(File file){
+        importProjectJSON.setJsonFile(file);
+        try{
+            importProjectJSON.addProjectInformation(importProjectJSON.getJsonPData());
+        }catch(Exception e){
+
+        }
+    }
+
+    private void showEarnedValue(){
         // TODO
     }
 
-    public void showScheduleVariance() throws Exception{
+    private void showScheduleVariance() throws Exception{
         // A new window
         final Stage window = new Stage();
         window.setTitle("Schedule Variance");
 
-        Variance var = new Variance();
+        Variance var = new Variance(importMemeberJSON.getJsonFile(), importProjectJSON.getJsonFile());
         double weeks = var.getWeeks();
         double maxYMargin = 1.2;
         double maxY = var.getEV(weeks) * maxYMargin;
@@ -255,13 +326,13 @@ public class GUI extends Application {
         window.show();
     }
 
-    public void showCostVariance()throws Exception{
+    private void showCostVariance()throws Exception{
         // A new window
         final Stage window = new Stage();
         window.setTitle("Cost Variance");
 
 
-        Variance var = new Variance();
+        Variance var = new Variance(importMemeberJSON.getJsonFile(), importProjectJSON.getJsonFile());
         double weeks = var.getWeeks();
         double maxYMargin = 1.2;
         double maxY = var.getEV(weeks) * maxYMargin;
@@ -312,7 +383,7 @@ public class GUI extends Application {
         window.show();
     }
 
-    public void printAllTeamMembers() {
+    private void printAllTeamMembers() {
         // A new window
         final Stage window = new Stage();
         window.setTitle("Team Member Information");
@@ -336,7 +407,7 @@ public class GUI extends Application {
         window.show();
     }
 
-    public void printProjectInformation(){
+    private void showProjectInformation(){
         // A new window
         final Stage window = new Stage();
         window.setTitle("Project Information");
@@ -360,7 +431,7 @@ public class GUI extends Application {
 
     }
 
-    public void searchByTeamMember() {
+    private void searchByTeamMember() {
         
         // A new window
         final Stage window = new Stage();
@@ -410,4 +481,11 @@ public class GUI extends Application {
 
      }
 
+    public ImportJSON getImportMemeberJSON() {
+        return importMemeberJSON;
+    }
+
+    public ImportProjectJSON getImportProjectJSON() {
+        return importProjectJSON;
+    }
 }

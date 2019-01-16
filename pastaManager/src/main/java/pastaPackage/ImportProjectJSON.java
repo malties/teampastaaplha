@@ -10,7 +10,9 @@ import java.util.ArrayList;
 
 public class ImportProjectJSON {
 
-    private static final String PROJECT_JSON_FILE = ClassLoader.getSystemResource("ProjectData.json").getFile();
+    //private static final String PROJECT_JSON_FILE = ClassLoader.getSystemResource("ProjectData.json").getFile();
+
+    private File JSON_file;
 
     private ProjectData projectData;
 
@@ -18,10 +20,18 @@ public class ImportProjectJSON {
         this.projectData = new ProjectData();
     }
 
+    public void setJsonFile(File file){
+        this.JSON_file = file;
+    }
+
+    public File getJsonFile(){
+        return this.JSON_file;
+    }
+
     public JsonObject getJsonPData() throws  Exception {
 
         Gson gson = new Gson();
-        File file = new File(PROJECT_JSON_FILE);
+        File file = this.JSON_file;
 
         JsonReader br = new JsonReader(new FileReader(file));
 
