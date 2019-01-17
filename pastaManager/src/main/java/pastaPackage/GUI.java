@@ -1,6 +1,5 @@
 package pastaPackage;
 
-import com.sun.java.swing.action.AlignCenterAction;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,13 +17,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
+import javafx.stage.FileChooser;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLOutput;
+import com.sun.java.swing.*;
+
 import java.util.ArrayList;
 
 public class GUI extends Application {
@@ -35,8 +35,12 @@ public class GUI extends Application {
 
     public static void main(String[] args) {
 
+
+
+
         launch(args);
     }
+
 
     @Override
     public void start(Stage primaryStage) {
@@ -60,14 +64,12 @@ public class GUI extends Application {
 
                 showImportWindow();
 
-                /*
-                try {
+               /* try {
                     importJSON();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                */
-
+*/
             }
         });
 
@@ -110,7 +112,6 @@ public class GUI extends Application {
         riskMatrixButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
                 if(matrix != null){
                     showRiskMatrix(matrix);
                 }
@@ -124,8 +125,9 @@ public class GUI extends Application {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                showCostVariance();
+                    showCostVariance();
                 } catch(Exception e){
+                    e.printStackTrace();
                     e.getStackTrace();
                 }
             }
@@ -153,14 +155,33 @@ public class GUI extends Application {
             @Override
             public void handle(ActionEvent event) {
 
-                showEarnedValue();
+                try {
+                    showEarnedValue();
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        // Opens Project analysis Window
+        Label PAnalysisLabel = new Label("Project Analysis");
+        Button PAnalysisButton = new Button("Project Analysis");
+        PAnalysisButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                try {
+                    showProjectAnalysis();
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
             }
         });
 
         VBox layout = new VBox(20);
         layout.getChildren().addAll(importLabel, importButton, printAllLabel, printAllButton,
                 printProjectLabel, printProject, searchLabel, searchButton, rmLabel, riskMatrixButton,
-                evLabel, earnedValueButton, svLabel, scheduleVarianceButton, cvLabel, costVarianceButton);
+                evLabel, earnedValueButton, svLabel, scheduleVarianceButton, cvLabel, costVarianceButton, PAnalysisLabel, PAnalysisButton);
         layout.setAlignment(Pos.TOP_CENTER);
         layout.setSpacing(20);
 
@@ -170,23 +191,6 @@ public class GUI extends Application {
 
     }
 
-    private void showRiskMatrix(Image image){
-        final Stage window = new Stage();
-        window.setTitle("Risk Matrix");
-
-
-        ImageView iv = new ImageView();
-        Image riskMatix = image;
-        iv.setImage(riskMatix);
-
-        VBox layout = new VBox();
-        layout.getChildren().add(iv);
-
-        Scene scene = new Scene(layout);
-        window.setScene(scene);
-        window.show();
-    }
-
     private void showImportWindow(){
         // A new window
         final Stage window = new Stage();
@@ -194,8 +198,8 @@ public class GUI extends Application {
         window.setMinHeight(300);
         window.setMinWidth(300);
 
-        Label memberJsonLabel = new Label("Import JSON with member data:");
-        Button memberJsonButton = new Button("Select a file");
+        Label memberJsonLabel = new Label("Import JSON with member data: ");
+        Button memberJsonButton = new Button("Select file");
 
         Label projectJsonLabel = new Label("Import JSON with project data:");
         Button projectJsonButton = new Button("Select a file");
@@ -212,7 +216,7 @@ public class GUI extends Application {
                 new FileChooser.ExtensionFilter("JPG", "*.jpg"),
                 new FileChooser.ExtensionFilter("JPEG", "*.jpeg"),
                 new FileChooser.ExtensionFilter("BMP", "*.bmp")
-                );
+        );
 
         memberJsonButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -250,6 +254,8 @@ public class GUI extends Application {
             }
         });
 
+
+
         VBox layout = new VBox(20);
         layout.setAlignment(Pos.CENTER);
         layout.getChildren().addAll(memberJsonLabel);
@@ -262,6 +268,10 @@ public class GUI extends Application {
         Scene scene = new Scene(layout);
         window.setScene(scene);
         window.show();
+    }
+
+    private void openMatrixFile(File file){
+        this.matrix = new Image(file.toURI().toString());
     }
 
     private void openMemberFile(File file){
@@ -282,32 +292,44 @@ public class GUI extends Application {
         }
     }
 
-    private void openMatrixFile(File file){
-        this.matrix = new Image(file.toURI().toString());
+
+
+    private void showRiskMatrix(Image image){
+        final Stage window = new Stage();
+        window.setTitle("Risk Matrix");
+
+
+        ImageView iv = new ImageView();
+        Image riskMatix = image;
+        iv.setImage(riskMatix);
+
+        VBox layout = new VBox();
+        layout.getChildren().add(iv);
+
+        Scene scene = new Scene(layout);
+        window.setScene(scene);
+        window.show();
     }
 
-    private void showEarnedValue(){
-        // TODO
-    }
-
-    private void showScheduleVariance() throws Exception{
+    public void showEarnedValue()throws Exception{
         // A new window
         final Stage window = new Stage();
-        window.setTitle("Schedule Variance");
+        window.setTitle("Earned Value");
+
 
         Variance var = new Variance(importMemeberJSON.getJsonFile(), importProjectJSON.getJsonFile());
         double weeks = var.getWeeks();
         double maxYMargin = 1.2;
         double maxY = var.getEV(weeks) * maxYMargin;
-        Label label = new Label("Schedule Variance:");
+        Label label = new Label("Earned Value:");
 
         //Defining the x axis
-        NumberAxis xAxis = new NumberAxis (0, weeks, 2);
+        NumberAxis xAxis = new NumberAxis (0,8,2);
         xAxis.setLabel("Time in weeks");
 
 
         //Defining the y axis
-        NumberAxis yAxis = new NumberAxis  (0, maxY, 10000);
+        NumberAxis yAxis = new NumberAxis  (0, maxY, 50000);
         yAxis.setLabel("Cost in SEK");
 
         //Creating the line chart
@@ -315,26 +337,22 @@ public class GUI extends Application {
 
 
         //Prepare XYChart.Series objects by setting data
-        XYChart.Series series = new XYChart.Series();
-        series.setName("PV");
+        XYChart.Series ActualCost = new XYChart.Series();
+        ActualCost.setName("AC");
 
-        XYChart.Series series1 = new XYChart.Series();
-        series1.setName("EV");
 
-        int XInterval = 0;
-        ArrayList<Double> SVValues = var.getSV();
-        for (int i = 0; i < SVValues.size(); i= i+0){
-            series.getData().add(new XYChart.Data(XInterval, SVValues.get(i)));
 
-            i ++;
-            series1.getData().add(new XYChart.Data(XInterval, SVValues.get(i)));
 
-            i ++;
-            XInterval += 2;
+        XYChart.Series EarnedValue = new XYChart.Series();
+        EarnedValue.setName("EV");
 
+        for (int i = -1 ; i<var.getWeeks();i=i+2){
+            EarnedValue.getData().add(new XYChart.Data(i+1,var.calculateEV(i+1)));
+            ActualCost.getData().add(new XYChart.Data(i+1,var.actualSpent(i+1)));
         }
 
-        linechart.getData().addAll(series,series1);
+
+        linechart.getData().addAll(ActualCost,EarnedValue);
 
         //Creating a Group object
         Group root = new Group(linechart);
@@ -346,7 +364,82 @@ public class GUI extends Application {
         window.show();
     }
 
-    private void showCostVariance()throws Exception{
+
+
+
+    public void showScheduleVariance() throws Exception{
+
+
+        // A new window
+        final Stage window = new Stage();
+        window.setTitle("Schedule Variance");
+
+        Variance var = new Variance(importMemeberJSON.getJsonFile(), importProjectJSON.getJsonFile());
+        //System.out.println(var.plannedSpent(8));
+        //System.out.println(var.actualSpent(8));
+        double weeks = var.getWeeks();
+        double maxYMargin = 1.2;
+        double maxY = var.getEV(weeks) * maxYMargin;
+        Label label = new Label("Schedule Variance:");
+
+        //Defining the x axis
+        NumberAxis xAxis = new NumberAxis (0, weeks, 2);
+        xAxis.setLabel("Time in weeks");
+
+
+        //Defining the y axis
+        NumberAxis yAxis = new NumberAxis  (0, maxY, maxY/100);
+        yAxis.setLabel("Cost in SEK");
+
+        //Creating the line chart
+        LineChart linechart = new LineChart(xAxis, yAxis);
+
+        linechart.setPrefSize(1200, 1000);
+
+
+        //Prepare XYChart.Series objects by setting data
+        XYChart.Series PV = new XYChart.Series();
+        PV.setName("PV");
+
+        XYChart.Series EV = new XYChart.Series();
+        EV.setName("EV");
+
+        //SV = EV - PV
+        XYChart.Series SV = new XYChart.Series();
+
+
+        int XInterval = 0;
+        ArrayList<Double> SVValues = var.getSV();
+        for (int i = 0; i < SVValues.size(); i= i+0){
+            PV.getData().add(new XYChart.Data(XInterval, SVValues.get(i)));
+
+            i ++;
+            EV.getData().add(new XYChart.Data(XInterval, SVValues.get(i)));
+
+            i ++;
+
+            if ( i == SVValues.size()-2) {
+                SV.getData().add(new XYChart.Data(XInterval, SVValues.get(i-1)));
+                SV.getData().add(new XYChart.Data(XInterval, SVValues.get(i -2)));
+            }
+            XInterval += 2;
+
+        }
+        SV.setName("Schedule Variance = " + ((SVValues.get(SVValues.size()-3)) - (SVValues.get(SVValues.size()-4))) + " Kr");
+
+        linechart.getData().addAll(PV,EV, SV);
+
+        //Creating a Group object
+        Group root = new Group(linechart);
+
+        //window.setMinHeight(600);
+        //window.setMinWidth(400);
+        Scene scene = new Scene(root, 1200, 1000);
+        window.setScene(scene);
+        window.show();
+    }
+
+    public void showCostVariance()throws Exception{
         // A new window
         final Stage window = new Stage();
         window.setTitle("Cost Variance");
@@ -364,12 +457,12 @@ public class GUI extends Application {
 
 
         //Defining the y axis
-        NumberAxis yAxis = new NumberAxis  (0, maxY, 10000);
+        NumberAxis yAxis = new NumberAxis  (0, maxY, maxY/100);
         yAxis.setLabel("Cost in SEK");
 
         //Creating the line chart
         LineChart linechart = new LineChart(xAxis, yAxis);
-
+        linechart.setPrefSize(1200, 1000);
 
         //Prepare XYChart.Series objects by setting data
         XYChart.Series series2 = new XYChart.Series();
@@ -377,6 +470,9 @@ public class GUI extends Application {
 
         XYChart.Series series3 = new XYChart.Series();
         series3.setName("EV");
+
+        XYChart.Series CV = new XYChart.Series();
+        CV.setName("CV");
 
         int XInterval = 0;
         ArrayList<Double> CVValues = var.getCV();
@@ -387,23 +483,105 @@ public class GUI extends Application {
             series3.getData().add(new XYChart.Data(XInterval, CVValues.get(i)));
 
             i ++;
+
+            if ( i == CVValues.size()-2) {
+                CV.getData().add(new XYChart.Data(XInterval, CVValues.get(i-1)));
+                CV.getData().add(new XYChart.Data(XInterval, CVValues.get(i -2)));
+            }
+
             XInterval += 2;
 
         }
 
-        linechart.getData().addAll(series2,series3);
+        linechart.getData().addAll(series2, series3, CV);
+        CV.setName("Cost Varince = " + ((CVValues.get(CVValues.size()-3)) - (CVValues.get(CVValues.size()-4))) + " Kr" );
 
         //Creating a Group object
         Group root = new Group(linechart);
 
         //window.setMinHeight(600);
         //window.setMinWidth(400);
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 1200, 1000);
         window.setScene(scene);
         window.show();
     }
 
-    private void printAllTeamMembers() {
+    public void showProjectAnalysis()throws Exception{
+        // A new window
+        final Stage window = new Stage();
+        window.setTitle("Project Analysis");
+
+
+        Variance var = new Variance(importMemeberJSON.getJsonFile(), importProjectJSON.getJsonFile());
+        double weeks = var.getWeeks();
+        double maxYMargin = 1.2;
+        double maxY = var.getEV(weeks) * maxYMargin;
+        Label label = new Label("Cost Variance:");
+
+        //Defining the x axis
+        NumberAxis xAxis = new NumberAxis (0, weeks, 2);
+        xAxis.setLabel("Time in weeks");
+
+
+        //Defining the y axis
+        NumberAxis yAxis = new NumberAxis  (0, maxY, maxY/100);
+        yAxis.setLabel("Cost in SEK");
+
+        //Creating the line chart
+        LineChart linechart = new LineChart(xAxis, yAxis);
+        linechart.setPrefSize(1000, 800);
+
+
+        //Prepare XYChart.Series objects by setting data
+        XYChart.Series AC = new XYChart.Series();
+        AC.setName("AC");
+
+        XYChart.Series EV = new XYChart.Series();
+        EV.setName("EV");
+
+        XYChart.Series PV = new XYChart.Series();
+        PV.setName("PV");
+
+        //SV = EV - PV
+        XYChart.Series SV = new XYChart.Series();
+        SV.setName("SV");
+
+        int XInterval = 0;
+        ArrayList<Double> PAnalysis = var.getPAnalysis();
+        for (int i = 0; i < PAnalysis.size(); i= i+0){
+            AC.getData().add(new XYChart.Data(XInterval, PAnalysis.get(i)));
+
+            i ++;
+            EV.getData().add(new XYChart.Data(XInterval, PAnalysis.get(i)));
+
+            i ++;
+
+            PV.getData().add(new XYChart.Data(XInterval, PAnalysis.get(i)));
+
+            i ++;
+
+            if ( i == PAnalysis.size()-3) {
+                SV.getData().add(new XYChart.Data(XInterval, PAnalysis.get(i-1)));
+                SV.getData().add(new XYChart.Data(XInterval, PAnalysis.get(i -2)));
+            }
+            XInterval += 2;
+
+        }
+
+        linechart.getData().addAll(AC,EV, PV, SV);
+
+
+        //Creating a Group object
+        Group root = new Group(linechart);
+
+        //window.setMinHeight(600);
+        //window.setMinWidth(400);
+        Scene scene = new Scene(root, 1000, 800);
+        window.setScene(scene);
+        window.show();
+    }
+
+    public void printAllTeamMembers() {
         // A new window
         final Stage window = new Stage();
         window.setTitle("Team Member Information");
@@ -427,7 +605,7 @@ public class GUI extends Application {
         window.show();
     }
 
-    private void showProjectInformation(){
+    public void showProjectInformation(){
         // A new window
         final Stage window = new Stage();
         window.setTitle("Project Information");
@@ -451,14 +629,14 @@ public class GUI extends Application {
 
     }
 
-    private void searchByTeamMember() {
-        
+    public void searchByTeamMember() {
+
         // A new window
         final Stage window = new Stage();
         window.setTitle("Team Member Information");
         window.setMinHeight(600);
         window.setMinWidth(600);
-        
+
         // Elements of the search window
         Label label = new Label("Search for info by user ID");
         final TextField input = new TextField();
@@ -499,6 +677,6 @@ public class GUI extends Application {
         window.setScene(scene);
         window.show();
 
-     }
+    }
 
 }
