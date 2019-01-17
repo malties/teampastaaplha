@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98c1257b-54e8-40e0-bb19-92b7a93c3253" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$11.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$12.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$13.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/GUI.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="178" column="40" lean-forward="true" selection-start-line="178" selection-start-column="40" selection-end-line="178" selection-end-column="40" />
+            <state relative-caret-position="236">
+              <caret line="190" column="39" selection-start-line="190" selection-start-column="39" selection-end-line="190" selection-end-column="39" />
               <folding>
                 <element signature="e#8164#8225#1" />
                 <element signature="method#openProjectFile#0;class#GUI#0" />
@@ -49,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/designColors.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="17">
+              <caret line="1" column="36" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -116,8 +101,8 @@
         <option value="$PROJECT_DIR$/src/main/java/pastaPackage/ImportJSON.java" />
         <option value="$PROJECT_DIR$/src/main/java/pastaPackage/ImportProjectJSON.java" />
         <option value="$PROJECT_DIR$/src/main/java/pastaPackage/designColors.css" />
-        <option value="$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java" />
         <option value="$PROJECT_DIR$/src/main/resources/designColors.css" />
+        <option value="$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java" />
       </list>
     </option>
   </component>
@@ -186,8 +171,9 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547735026297" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547738505095" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="configurable.group.other" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
@@ -238,19 +224,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1547585676387</updated>
-      <workItem from="1547729584146" duration="2787000" />
+      <workItem from="1547729584146" duration="6306000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2787000" />
+    <option name="totallyTimeSpent" value="6306000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="720" extended-state="0" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49609375" visible="true" weight="0.25081968" />
-      <window_info id="Structure" order="1" sideWeight="0.50390625" side_tool="true" visible="true" weight="0.25081968" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49615383" visible="true" weight="0.16923077" />
+      <window_info id="Structure" order="1" sideWeight="0.50384617" side_tool="true" visible="true" weight="0.16923077" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -260,16 +246,16 @@
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1292517" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.07637656" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.110124335" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Flutter Performance" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.108191654" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.106571935" />
       <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -331,10 +317,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/designColors.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="36" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="178" column="40" lean-forward="true" selection-start-line="178" selection-start-column="40" selection-end-line="178" selection-end-column="40" />
+        <state relative-caret-position="236">
+          <caret line="190" column="39" selection-start-line="190" selection-start-column="39" selection-end-line="190" selection-end-column="39" />
           <folding>
             <element signature="e#8164#8225#1" />
             <element signature="method#openProjectFile#0;class#GUI#0" />
@@ -347,13 +340,6 @@
             <element signature="method#showProjectInformation#0;class#GUI#0" />
             <element signature="method#searchByTeamMember#0;class#GUI#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/designColors.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>

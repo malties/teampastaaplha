@@ -34,7 +34,6 @@ public class GUI extends Application {
     private ImportJSON importMemeberJSON = new ImportJSON();
     private ImportProjectJSON importProjectJSON = new ImportProjectJSON();
     private Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-
     private Image matrix;
 
     public static void main(String[] args) {
@@ -53,7 +52,9 @@ public class GUI extends Application {
 
         StackPane homeLayout = new StackPane();
 
+
         Scene homeScene = new Scene(homeLayout, 1280, 1000);
+
 
         stage.setScene(homeScene);
         stage.setTitle("Pasta Manager");
@@ -171,14 +172,22 @@ public class GUI extends Application {
 
         VBox layout = new VBox(20);
         layout.getChildren().addAll(importLabel, importButton, printAllLabel, printAllButton,
-                printProjectLabel, printProject, searchLabel, searchButton, rmLabel, riskMatrixButton,
-                evLabel, earnedValueButton, svLabel, scheduleVarianceButton, cvLabel, costVarianceButton);
-        layout.setAlignment(Pos.TOP_CENTER);
-        layout.setSpacing(20);
+                printProjectLabel, printProject, searchLabel, searchButton, rmLabel, riskMatrixButton,evLabel, earnedValueButton, svLabel,
+                scheduleVarianceButton, cvLabel, costVarianceButton);
+        layout.setAlignment(Pos.BASELINE_CENTER);
+        layout.setSpacing(6);
 
         Scene scene = new Scene(layout);
+
         scene.getStylesheets().add("designColors.css");
+
         stage.setScene(scene);
+
+        //setting the size of the home screen
+        primaryStage.setMinHeight(500);
+        primaryStage.setMinWidth(300);
+        //centering the application
+        primaryStage.centerOnScreen();
         stage.show();
 
     }
@@ -492,9 +501,6 @@ public class GUI extends Application {
 
         //Creating a Group object
         Group root = new Group(linechart);
-
-        //window.setMinHeight(600);
-        //window.setMinWidth(400);
         Scene scene = new Scene(root,primScreenBounds.getWidth(), primScreenBounds.getHeight());
         window.setScene(scene);
         window.show();
