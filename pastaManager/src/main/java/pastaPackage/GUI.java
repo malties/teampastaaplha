@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
@@ -17,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
 import java.awt.*;
@@ -31,6 +33,8 @@ public class GUI extends Application {
 
     private ImportJSON importMemeberJSON = new ImportJSON();
     private ImportProjectJSON importProjectJSON = new ImportProjectJSON();
+    private Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+
     private Image matrix;
 
     public static void main(String[] args) {
@@ -164,28 +168,16 @@ public class GUI extends Application {
         });
 
         // Opens Project analysis Window
-        Label PAnalysisLabel = new Label("Project Analysis");
-        Button PAnalysisButton = new Button("Project Analysis");
-        PAnalysisButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
-                try {
-                    showProjectAnalysis();
-                } catch (Exception e){
-                    e.printStackTrace();
-                }
-            }
-        });
 
         VBox layout = new VBox(20);
         layout.getChildren().addAll(importLabel, importButton, printAllLabel, printAllButton,
                 printProjectLabel, printProject, searchLabel, searchButton, rmLabel, riskMatrixButton,
-                evLabel, earnedValueButton, svLabel, scheduleVarianceButton, cvLabel, costVarianceButton, PAnalysisLabel, PAnalysisButton);
+                evLabel, earnedValueButton, svLabel, scheduleVarianceButton, cvLabel, costVarianceButton);
         layout.setAlignment(Pos.TOP_CENTER);
         layout.setSpacing(20);
 
         Scene scene = new Scene(layout);
+        scene.getStylesheets().add("designColors.css");
         stage.setScene(scene);
         stage.show();
 
@@ -266,8 +258,10 @@ public class GUI extends Application {
         layout.getChildren().addAll(matrixButton);
 
         Scene scene = new Scene(layout);
+
         window.setScene(scene);
         window.show();
+
     }
 
     private void openMatrixFile(File file){
@@ -394,7 +388,7 @@ public class GUI extends Application {
         //Creating the line chart
         LineChart linechart = new LineChart(xAxis, yAxis);
 
-        linechart.setPrefSize(1200, 1000);
+        linechart.setPrefSize(primScreenBounds.getWidth(), primScreenBounds.getHeight());
 
 
         //Prepare XYChart.Series objects by setting data
@@ -434,7 +428,7 @@ public class GUI extends Application {
 
         //window.setMinHeight(600);
         //window.setMinWidth(400);
-        Scene scene = new Scene(root, 1200, 1000);
+        Scene scene = new Scene(root,primScreenBounds.getWidth(), primScreenBounds.getHeight());
         window.setScene(scene);
         window.show();
     }
@@ -462,7 +456,7 @@ public class GUI extends Application {
 
         //Creating the line chart
         LineChart linechart = new LineChart(xAxis, yAxis);
-        linechart.setPrefSize(1200, 1000);
+        linechart.setPrefSize(primScreenBounds.getWidth(), primScreenBounds.getHeight());
 
         //Prepare XYChart.Series objects by setting data
         XYChart.Series series2 = new XYChart.Series();
@@ -501,85 +495,12 @@ public class GUI extends Application {
 
         //window.setMinHeight(600);
         //window.setMinWidth(400);
-        Scene scene = new Scene(root, 1200, 1000);
+        Scene scene = new Scene(root,primScreenBounds.getWidth(), primScreenBounds.getHeight());
         window.setScene(scene);
         window.show();
     }
 
-    public void showProjectAnalysis()throws Exception{
-        // A new window
-        final Stage window = new Stage();
-        window.setTitle("Project Analysis");
 
-
-        Variance var = new Variance(importMemeberJSON.getJsonFile(), importProjectJSON.getJsonFile());
-        double weeks = var.getWeeks();
-        double maxYMargin = 1.2;
-        double maxY = var.getEV(weeks) * maxYMargin;
-        Label label = new Label("Cost Variance:");
-
-        //Defining the x axis
-        NumberAxis xAxis = new NumberAxis (0, weeks, 2);
-        xAxis.setLabel("Time in weeks");
-
-
-        //Defining the y axis
-        NumberAxis yAxis = new NumberAxis  (0, maxY, maxY/100);
-        yAxis.setLabel("Cost in SEK");
-
-        //Creating the line chart
-        LineChart linechart = new LineChart(xAxis, yAxis);
-        linechart.setPrefSize(1000, 800);
-
-
-        //Prepare XYChart.Series objects by setting data
-        XYChart.Series AC = new XYChart.Series();
-        AC.setName("AC");
-
-        XYChart.Series EV = new XYChart.Series();
-        EV.setName("EV");
-
-        XYChart.Series PV = new XYChart.Series();
-        PV.setName("PV");
-
-        //SV = EV - PV
-        XYChart.Series SV = new XYChart.Series();
-        SV.setName("SV");
-
-        int XInterval = 0;
-        ArrayList<Double> PAnalysis = var.getPAnalysis();
-        for (int i = 0; i < PAnalysis.size(); i= i+0){
-            AC.getData().add(new XYChart.Data(XInterval, PAnalysis.get(i)));
-
-            i ++;
-            EV.getData().add(new XYChart.Data(XInterval, PAnalysis.get(i)));
-
-            i ++;
-
-            PV.getData().add(new XYChart.Data(XInterval, PAnalysis.get(i)));
-
-            i ++;
-
-            if ( i == PAnalysis.size()-3) {
-                SV.getData().add(new XYChart.Data(XInterval, PAnalysis.get(i-1)));
-                SV.getData().add(new XYChart.Data(XInterval, PAnalysis.get(i -2)));
-            }
-            XInterval += 2;
-
-        }
-
-        linechart.getData().addAll(AC,EV, PV, SV);
-
-
-        //Creating a Group object
-        Group root = new Group(linechart);
-
-        //window.setMinHeight(600);
-        //window.setMinWidth(400);
-        Scene scene = new Scene(root, 1000, 800);
-        window.setScene(scene);
-        window.show();
-    }
 
     public void printAllTeamMembers() {
         // A new window
