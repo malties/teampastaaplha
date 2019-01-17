@@ -1,0 +1,17 @@
+{
+  "Project" : {
+    "PName": "pasta project",
+    "PId": "032",
+    "startWeek": 47,
+    "startYear": 2018,
+    "endYear": 2019,
+    "endWeek": 2,
+    "budget": 80000,
+    "additionalCosts": [
+      4000,
+      10000,
+      30000,
+      800
+    ]
+  }
+}
