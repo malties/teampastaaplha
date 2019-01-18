@@ -2,46 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66814bff-218c-42b8-8499-0875462ed0e8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pastaManager.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pastaPackage/ImportJSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pastaPackage/ImportJSON.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pastaPackage/ImportProjectJSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pastaPackage/ImportProjectJSON.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pastaPackage/ProjectData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pastaPackage/ProjectData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pastaPackage/UserInput.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pastaPackage/Variance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pastaPackage/Variance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Individual.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ProjectData.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/TeamMemberData.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/risk matrix.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Individual.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ProjectData.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TeamMemberData.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$10.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/GUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/ImportJSON.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/ImportJSON.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/ImportProjectJSON.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/ImportProjectJSON.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/ProjectData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/ProjectData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/TeamMemberData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/TeamMemberData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/UserInput.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/Variance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/Variance.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/risk matrix.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../t/src/Individual.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../t/src/TeamMemberData.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../t/src/main/java/Import/ImportJSON.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../t/src/main/java/Import/TeamMemberData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/pastaManager.kotlin_module" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,12 +14,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="460" column="19" selection-start-line="460" selection-start-column="19" selection-end-line="460" selection-end-column="19" />
+            <state relative-caret-position="255">
+              <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
             </state>
           </provider>
         </entry>
@@ -64,8 +27,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/TeamMemberData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-63">
+            <state relative-caret-position="17">
               <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/Variance.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -73,8 +45,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/ImportProjectJSON.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1350">
-              <caret line="114" selection-start-line="114" selection-end-line="114" />
+            <state relative-caret-position="634">
+              <caret line="102" selection-start-line="102" selection-end-line="102" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/ProjectData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="381">
+              <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
+              <folding>
+                <element signature="e#1840#1841#0" expanded="true" />
+                <element signature="e#1932#1933#0" expanded="true" />
+                <element signature="e#2060#2061#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -82,7 +68,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/ImportJSON.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1816">
+            <state relative-caret-position="17">
               <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
             </state>
           </provider>
@@ -99,14 +85,15 @@
         <option value="$PROJECT_DIR$/src/main/java/pastaPackage/ImportProjectJSON.java" />
         <option value="$PROJECT_DIR$/src/main/java/pastaPackage/ImportJSON.java" />
         <option value="$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pastaPackage/ProjectData.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="93" />
-    <option name="y" value="58" />
-    <option name="width" value="1387" />
-    <option name="height" value="877" />
+    <option name="y" value="57" />
+    <option name="width" value="1388" />
+    <option name="height" value="878" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -114,8 +101,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -156,7 +143,11 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547777494846" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547801878671" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="configurable.group.other" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
@@ -202,43 +193,53 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1547777297387</updated>
+      <workItem from="1547794344437" duration="4868000" />
     </task>
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="4868000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="53" y="23" width="1387" height="877" extended-state="6" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24981412" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.254251" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Flutter Performance" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299363" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3299363" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1474245" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Flutter Inspector" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Flutter Outline" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Flutter Performance" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" />
+      <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Flutter Inspector" order="6" />
+      <window_info anchor="right" id="Flutter Outline" order="7" />
+      <window_info anchor="right" id="Capture Analysis" order="8" />
+      <window_info anchor="right" id="Palette&#9;" order="9" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/resources/designColors.css">
@@ -254,34 +255,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/TeamMemberData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-63">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/TeamMemberData.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/ImportProjectJSON.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/ImportJSON.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1350">
-          <caret line="114" selection-start-line="114" selection-end-line="114" />
+        <state relative-caret-position="17">
+          <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/ImportJSON.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/Variance.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1816">
-          <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
+        <state relative-caret-position="68">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/javafx-src.zip!/javafx/geometry/Rectangle2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/javafx-src.zip!/javafx/application/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="222" column="23" selection-start-line="222" selection-start-column="23" selection-end-line="222" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/ImportProjectJSON.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="634">
+          <caret line="102" selection-start-line="102" selection-end-line="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/ProjectData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
+          <folding>
+            <element signature="e#1840#1841#0" expanded="true" />
+            <element signature="e#1932#1933#0" expanded="true" />
+            <element signature="e#2060#2061#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/TeamMemberData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="460" column="19" selection-start-line="460" selection-start-column="19" selection-end-line="460" selection-end-column="19" />
+        <state relative-caret-position="255">
+          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
         </state>
       </provider>
     </entry>

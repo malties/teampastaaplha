@@ -74,7 +74,13 @@ public class ProjectData {
     }
 
     public double getAdditionalCost(double interval) {
-        return this.additionalCost;
+        if (interval >= this.getAdditionalCosts().size()) {
+            return this.getAdditionalCosts().get( (int)interval - 1 );
+
+
+
+        }
+        return this.getAdditionalCosts().get( (int)interval) ;
     }
 
     public void setAdditionalCost(int additionalCost) {
