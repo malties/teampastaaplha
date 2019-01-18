@@ -1,2 +1,2 @@
-# teampastaalpha Mini Project
-changing
+# Team Pasta Mini Project
+Pasta Manager : Project management tool
