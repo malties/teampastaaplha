@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class ImportProjectJSON {
 
-    private static final String PROJECT_JSON_FILE = ClassLoader.getSystemResource("ProjectData.json").getFile();
+    private File JSON_file;
 
     private ProjectData projectData;
 
@@ -18,10 +18,18 @@ public class ImportProjectJSON {
         this.projectData = new ProjectData();
     }
 
+    public void setJsonFile(File file){
+        this.JSON_file = file;
+    }
+
+    public File getJsonFile(){
+        return this.JSON_file;
+    }
+
     public JsonObject getJsonPData() throws  Exception {
 
         Gson gson = new Gson();
-        File file = new File(PROJECT_JSON_FILE);
+        File file = this.JSON_file;
 
         JsonReader br = new JsonReader(new FileReader(file));
 
@@ -66,16 +74,6 @@ public class ImportProjectJSON {
         }
         projData.setAdditionalCosts(additionalCosts);
 
-        /*
-        int jsonAdditionalCostQ1 = jsonPData.get("ACQ1").getAsInt();
-        projData.setAdditionalCostQ1(jsonAdditionalCostQ1);
-        int jsonAdditionalCostQ2 = jsonPData.get("ACQ2").getAsInt();
-        projData.setAdditionalCostQ2(jsonAdditionalCostQ2);
-        int jsonAdditionalCostQ3 = jsonPData.get("ACQ3").getAsInt();
-        projData.setAdditionalCostQ3(jsonAdditionalCostQ3);
-        int jsonAdditionalCostQ4 = jsonPData.get("ACQ4").getAsInt();
-        projData.setAdditionalCostQ4(jsonAdditionalCostQ4);
-*/
         this.projectData = projData;
     }
 
@@ -111,17 +109,8 @@ public class ImportProjectJSON {
         return projectData.getBudget();
     }
 
-    public int getAdditionalCost(int interval){
+    public double getAdditionalCost(double interval){
         return projectData.getAdditionalCost(interval);
     }
 
-    /*
-    public int getAdditionalCostQ1(){ return projectData.getAdditionalCostQ1(); }
-
-    public int getAdditionalCostQ2(){ return projectData.getAdditionalCostQ2(); }
-
-    public int getAdditionalCostQ3(){ return projectData.getAdditionalCostQ3(); }
-
-    public int getAdditionalCostQ4(){ return projectData.getAdditionalCostQ4(); }
-    */
 }

@@ -3,296 +3,397 @@ package pastaPackage;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.FileChooser;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.sql.SQLOutput;
+import com.sun.java.swing.*;
+import javafx.stage.WindowEvent;
 
+import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class GUI extends Application {
 
-    ImportJSON importMemeberJSON = new ImportJSON();
-    ImportProjectJSON importProjectJSON = new ImportProjectJSON();
-    Button searchButton;
-    Button importButton;
-    Button printAllButton;
-    Button printProject;
-    Button earnedValueButton;
-    Button scheduleVarianceButton;
-    Button costVarianceButton;
-    Button riskMatrixButton;
+    private ImportJSON importMemeberJSON = new ImportJSON();
+    private ImportProjectJSON importProjectJSON = new ImportProjectJSON();
+    private Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+    private Image matrix;
 
     public static void main(String[] args) {
-
-
-
 
         launch(args);
     }
 
-    Stage stage;
-    Scene homeScene;
 
     @Override
     public void start(Stage primaryStage) {
 
-        stage = primaryStage;
-
+        Stage stage = primaryStage;
         StackPane homeLayout = new StackPane();
-
-        homeScene = new Scene(homeLayout, 1280, 1000);
+        Scene homeScene = new Scene(homeLayout, 1280, 1000);
 
         stage.setScene(homeScene);
         stage.setTitle("Pasta Manager");
         stage.show();
 
         // Imports JSON file
-        Label importLabel = new Label("Import JSON file");
-        importButton = new Button("Import");
-        importButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
-                try {
-                    importJSON();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
+        Label importLabel = new Label("Import project data:");
+        Button importButton = new Button("Import");
+        importButton.setOnAction(event -> showImportWindow());
 
         // Prints all team members' information
-        Label printAllLabel = new Label("View all team member's data");
-        printAllButton = new Button("Show All Members");
-        printAllButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
+        Label printAllLabel = new Label("View all team member's data:");
+        Button printAllButton = new Button("View");
+        printAllButton.setOnAction(event -> {
+            if(importMemeberJSON.getJsonFile() == null){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText("Data missing!\nPlease import data first.");
+                alert.showAndWait();
+            }else{
                 printAllTeamMembers();
             }
         });
 
         // Prints project information
-        Label printProjectLabel = new Label("View project information");
-        printProject = new Button("Show project information");
-        printProject.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
-                printProjectInformation();
+        Label printProjectLabel = new Label("View project information:");
+        Button printProject = new Button("View");
+        printProject.setOnAction(event -> {
+            if(importProjectJSON.getJsonFile() == null || importMemeberJSON.getJsonFile() == null){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText("Data missing!\nPlease import data first.");
+                alert.showAndWait();
+            }else{
+                showProjectInformation();
             }
         });
 
         // Search for team member information
-        Label searchLabel = new Label("Search for team member information");
-        searchButton = new Button("Search team member data");
-        searchButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
-                searchByTeamMember();
-            }
-        });
+        Label searchLabel = new Label("Search for team member information:");
+        Button searchButton = new Button("Search");
+        searchButton.setOnAction(event -> searchByTeamMember());
 
         // Opens Risk Matrix window
-        Label rmLabel = new Label("Risk Matrix");
-        riskMatrixButton = new Button("Risk Matrix");
-        riskMatrixButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
-                showRiskMatrix();
+        Label rmLabel = new Label("View Risk Matrix:");
+        Button riskMatrixButton = new Button("View");
+        riskMatrixButton.setOnAction(event -> {
+            if(matrix == null){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText("Risk matrix missing!\nPlease import risk matrix first.");
+                alert.showAndWait();
+            }else{
+                showRiskMatrix(matrix);
             }
         });
 
         // Opens Cost Variance window
         Label cvLabel = new Label("Cost Variance");
-        costVarianceButton = new Button("Cost Variance");
-        costVarianceButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
-                showCostVariance();
+        Button costVarianceButton = new Button("View");
+        costVarianceButton.setOnAction(event -> {
+            if(importProjectJSON.getJsonFile() == null || importMemeberJSON.getJsonFile() == null){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText("Data missing!\nPlease import data first.");
+                alert.showAndWait();
+            }else{
+                try {
+                    showCostVariance();
+                } catch(Exception e){
+                    e.printStackTrace();
+                    e.getStackTrace();
+                }
             }
         });
 
         // Opens Schedule Variance window
         Label svLabel = new Label("Schedule Variance");
-        scheduleVarianceButton = new Button("Schedule Variance");
-        scheduleVarianceButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
+        Button scheduleVarianceButton = new Button("View");
+        scheduleVarianceButton.setOnAction(event -> {
+            if(importProjectJSON.getJsonFile() == null || importMemeberJSON.getJsonFile() == null){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText("Data missing!\nPlease import data first.");
+                alert.showAndWait();
+            }else{
                 try {
                     showScheduleVariance();
-                } catch (Exception e){
+                } catch(Exception e){
                     e.printStackTrace();
+                    e.getStackTrace();
                 }
             }
         });
 
         // Opens Earned Value window
         Label evLabel = new Label("Earned Value");
-        earnedValueButton = new Button("Earned Value");
-        earnedValueButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
-                showEarnedValue();
+        Button earnedValueButton = new Button("View");
+        earnedValueButton.setOnAction(event -> {
+            if(importProjectJSON.getJsonFile() == null || importMemeberJSON.getJsonFile() == null){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText("Data missing!\nPlease import data first.");
+                alert.showAndWait();
+            }else{
+                try {
+                    showEarnedValue();
+                } catch(Exception e){
+                    e.printStackTrace();
+                    e.getStackTrace();
+                }
             }
         });
 
-        VBox layout = new VBox(20);
-        layout.getChildren().addAll(importLabel, importButton, printAllLabel, printAllButton,
-                printProjectLabel, printProject, searchLabel, searchButton, rmLabel, riskMatrixButton,
-                evLabel, earnedValueButton, svLabel, scheduleVarianceButton, cvLabel, costVarianceButton);
-        layout.setAlignment(Pos.TOP_CENTER);
-        layout.setSpacing(20);
+        GridPane layout = new GridPane();
+        layout.setPadding(new Insets(20));
+        layout.setHgap(25);
+        layout.setVgap(15);
+
+        Text text1 = new Text("Project Information");
+        text1.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+
+        Text text2 = new Text("Project Analysis");
+        text2.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+
+        Text importText = new Text("Import project data:");
+        importText.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+
+        layout.add(importText, 0, 0);
+        layout.add(importButton, 1, 0);
+
+        layout.add(text1,0,1, 2,1);
+
+        layout.add(printAllLabel, 0,2);
+        layout.add(printAllButton,1,2);
+
+        layout.add(printProjectLabel, 0,3);
+        layout.add(printProject,1,3);
+
+        layout.add(rmLabel, 0, 4);
+        layout.add(riskMatrixButton, 1, 4);
+
+        layout.add(searchLabel, 0, 5);
+        layout.add(searchButton, 1, 5);
+
+        layout.add(text2,0,6,2,1);
+
+        layout.add(evLabel, 0, 7);
+        layout.add(earnedValueButton, 1, 7);
+
+        layout.add(svLabel, 0, 8);
+        layout.add(scheduleVarianceButton, 1, 8);
+
+        layout.add(cvLabel, 0, 9);
+        layout.add(costVarianceButton, 1, 9);
 
         Scene scene = new Scene(layout);
         stage.setScene(scene);
+
+        //centering the application
+        primaryStage.centerOnScreen();
         stage.show();
 
     }
 
-    public void importJSON() throws Exception{
+    private void showImportWindow(){
+        // A new window
+        final Stage window = new Stage();
+        window.setTitle("Import Files");
+        window.setMinHeight(300);
+        window.setMinWidth(300);
 
-        importMemeberJSON.addTeamMembers(importMemeberJSON.getJsonArray());
-        importProjectJSON.addProjectInformation(importProjectJSON.getJsonPData());
+        Label memberJsonLabel = new Label("Import JSON with member data: ");
+        Button memberJsonButton = new Button("Select file");
+
+        Label projectJsonLabel = new Label("Import JSON with project data:");
+        Button projectJsonButton = new Button("Select a file");
+
+        Label matrixLabel = new Label("Import risk matrix:");
+        Button matrixButton = new Button("Select an image");
+
+        final FileChooser jsonChooser = new FileChooser();
+        jsonChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON", "*.json"));
+
+        final FileChooser matrixChooser = new FileChooser();
+        matrixChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("PNG", "*.png"),
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("JPEG", "*.jpeg"),
+                new FileChooser.ExtensionFilter("BMP", "*.bmp")
+        );
+
+        memberJsonButton.setOnAction(event -> {
+
+            File file = jsonChooser.showOpenDialog(window);
+            if(file != null){
+                openMemberFile(file);
+            }
+
+        });
+
+        projectJsonButton.setOnAction(event -> {
+
+            File file = jsonChooser.showOpenDialog(window);
+            if(file != null){
+                openProjectFile(file);
+            }
+
+        });
+
+        matrixButton.setOnAction(event -> {
+
+            File file = matrixChooser.showOpenDialog(window);
+            if(file != null){
+                openMatrixFile(file);
+            }
+
+        });
+
+        VBox layout = new VBox(20);
+        layout.setAlignment(Pos.CENTER);
+        layout.getChildren().addAll(memberJsonLabel);
+        layout.getChildren().addAll(memberJsonButton);
+        layout.getChildren().addAll(projectJsonLabel);
+        layout.getChildren().addAll(projectJsonButton);
+        layout.getChildren().addAll(matrixLabel);
+        layout.getChildren().addAll(matrixButton);
+
+        Scene scene = new Scene(layout);
+
+        window.setScene(scene);
+        window.show();
+
+        window.setOnCloseRequest(event -> {
+            if(this.importMemeberJSON.getJsonFile() == null){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.CANCEL);
+                alert.setTitle("Confirmation Dialog");
+                alert.setHeaderText(null);
+                alert.setContentText("You have not imported any team member data!\nAre you sure that you want to exit?");
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if(result.get() == ButtonType.YES){
+                    window.close();
+                }else{
+                    event.consume();
+                }
+            }else if(this.importProjectJSON.getJsonFile() == null){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.CANCEL);
+                alert.setTitle("Confirmation Dialog");
+                alert.setHeaderText(null);
+                alert.setContentText("You have not imported any project data!\nAre you sure that you want to exit?");
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if(result.get() == ButtonType.YES){
+                    window.close();
+                }else{
+                    event.consume();
+                }
+            }else if(this.matrix == null){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.CANCEL);
+                alert.setTitle("Confirmation Dialog");
+                alert.setHeaderText(null);
+                alert.setContentText("You have not imported a risk matrix!\nAre you sure that you want to exit?");
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if(result.get() == ButtonType.YES){
+                    window.close();
+                }else{
+                    event.consume();
+                }
+            }
+
+        });
 
     }
 
-    public void showRiskMatrix(){
-        // TODO
+    private void openMatrixFile(File file){
+        this.matrix = new Image(file.toURI().toString());
     }
 
-    public void showEarnedValue(){
-        // TODO
+    private void openMemberFile(File file){
+        importMemeberJSON.setJsonFile(file);
+        try{
+            importMemeberJSON.addTeamMembers(importMemeberJSON.getJsonArray());
+        }catch (Exception e){
+
+        }
+    }
+
+    private void openProjectFile(File file){
+        importProjectJSON.setJsonFile(file);
+        try{
+            importProjectJSON.addProjectInformation(importProjectJSON.getJsonPData());
+        }catch(Exception e){
+
+        }
+    }
+
+    private void showRiskMatrix(Image image){
+
+        // A new window
+        final Stage window = new Stage();
+        window.setTitle("Risk Matrix");
+
+        ImageView iv = new ImageView();
+        Image riskMatix = image;
+        iv.setImage(riskMatix);
+
+        VBox layout = new VBox();
+        layout.getChildren().add(iv);
+
+        Scene scene = new Scene(layout);
+        window.setScene(scene);
+        window.show();
+    }
+
+    public void showEarnedValue()throws Exception{
+        showGraph("EV");
     }
 
     public void showScheduleVariance() throws Exception{
-        // A new window
-        final Stage window = new Stage();
-        window.setTitle("Schedule Variance");
-        //window.setMinHeight(600);
-        //window.setMinWidth(400);
-
-        Variance var = new Variance();
-        double weeks = var.getWeeks();
-        double maxYMargin = 1.2;
-        double maxY = var.getEV(weeks) * maxYMargin;
-        Label label = new Label("Schedule Variance:");
-
-        //Defining the x axis
-        NumberAxis xAxis = new NumberAxis (0, weeks, 2);
-        xAxis.setLabel("Time in weeks");
-
-
-        //Defining the y axis
-        NumberAxis yAxis = new NumberAxis  (0, maxY, 100000);
-        yAxis.setLabel("Cost in SEK");
-
-        //Creating the line chart
-        LineChart linechart = new LineChart(xAxis, yAxis);
-
-
-        //Prepare XYChart.Series objects by setting data
-        XYChart.Series series = new XYChart.Series();
-        series.setName("PV");
-
-        XYChart.Series series2 = new XYChart.Series();
-        series2.setName("EV");
-
-        int XInterval = 0;
-        ArrayList<Double> SVValues = var.getSV();
-        for (int i = 0; i < SVValues.size(); i= i+0){
-            series.getData().add(new XYChart.Data(XInterval, SVValues.get(i)));
-            System.out.println(SVValues.get(i));
-            i ++;
-            series2.getData().add(new XYChart.Data(XInterval, SVValues.get(i)));
-            System.out.println(SVValues.get(i));
-            i ++;
-            XInterval += 2;
-
-        }
-
-        linechart.getData().addAll(series,series2);
-
-        //Creating a Group object
-        Group root = new Group(linechart);
-
-        Scene scene = new Scene(root, 600, 400);
-        window.setScene(scene);
-        window.show();
+        showGraph("SV");
     }
 
-    public void showCostVariance(){
-
-        // A new window
-        final Stage window = new Stage();
-        window.setTitle("Cost Variance");
-        //window.setMinHeight(600);
-        //window.setMinWidth(400);
-
-        Label label = new Label("Cost Variance:");
-
-        //Defining the x axis
-        NumberAxis xAxis = new NumberAxis (0, 8, 2);
-        xAxis.setLabel("Time in weeks");
-
-        //Defining the y axis
-        NumberAxis yAxis = new NumberAxis  (100000, 800000, 100000);
-        yAxis.setLabel("Cost in SEK");
-
-        //Creating the line chart
-        LineChart linechart = new LineChart(xAxis, yAxis);
-
-
-        //Prepare XYChart.Series objects by setting data
-        XYChart.Series series = new XYChart.Series();
-        series.setName("EV");
-
-
-        series.getData().add(new XYChart.Data(0, 200000));
-        series.getData().add(new XYChart.Data(2, 300000));
-        series.getData().add(new XYChart.Data(4, 400000));
-        series.getData().add(new XYChart.Data(6, 400000));
-        series.getData().add(new XYChart.Data(8, 500000));
-
-
-        XYChart.Series series2 = new XYChart.Series();
-        series2.setName("AC");
-
-        series2.getData().add(new XYChart.Data(0, 100000));
-        series2.getData().add(new XYChart.Data(2, 200000));
-        series2.getData().add(new XYChart.Data(4, 300000));
-        series2.getData().add(new XYChart.Data(6, 300000));
-        series2.getData().add(new XYChart.Data(8, 400000));
-
-        //Setting the data to Line chart
-        linechart.getData().addAll(series,series2);
-
-
-        //Creating a Group object
-        Group root = new Group(linechart);
-
-        Scene scene = new Scene(root, 600, 400);
-        window.setScene(scene);
-        window.show();
+    public void showCostVariance()throws Exception{
+        showGraph("CV");
     }
+
+
 
     public void printAllTeamMembers() {
+
         // A new window
         final Stage window = new Stage();
         window.setTitle("Team Member Information");
@@ -304,7 +405,7 @@ public class GUI extends Application {
         text.setText(importMemeberJSON.printTeamMemberData());
 
 
-        // Adds elements to window
+        // Add elements to window
         VBox layout = new VBox(20);
         layout.getChildren().addAll(label, text);
         layout.setAlignment(Pos.TOP_CENTER);
@@ -316,7 +417,8 @@ public class GUI extends Application {
         window.show();
     }
 
-    public void printProjectInformation(){
+    public void showProjectInformation(){
+
         // A new window
         final Stage window = new Stage();
         window.setTitle("Project Information");
@@ -341,41 +443,33 @@ public class GUI extends Application {
     }
 
     public void searchByTeamMember() {
-        
+
         // A new window
         final Stage window = new Stage();
         window.setTitle("Team Member Information");
         window.setMinHeight(600);
         window.setMinWidth(600);
-        
+
         // Elements of the search window
         Label label = new Label("Search for info by user ID");
         final TextField input = new TextField();
         input.setPromptText("Enter the user ID");
         final Text text = new Text();
         Button searchUid = new Button("Search");
-        searchUid.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+        searchUid.setOnAction(event -> {
 
-                // Search
-                int id;
-                try {
-                    id = Integer.parseInt(input.getText());
+            // Search
+            int id;
+            try {
+                id = Integer.parseInt(input.getText());
 
-                    text.setText(importMemeberJSON.search(id));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                text.setText(importMemeberJSON.search(id));
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
         Button close = new Button("Close window");
-        close.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                window.close();
-            }
-        });
+        close.setOnAction(event -> window.close());
 
         // Adds elements to window
         VBox layout = new VBox(20);
@@ -388,6 +482,112 @@ public class GUI extends Application {
         window.setScene(scene);
         window.show();
 
-     }
+    }
+
+    private void showGraph(String graphName) throws Exception {
+
+        // A new window
+        final Stage window = new Stage();
+        window.setTitle("Schedule Variance");
+
+        Variance var = new Variance(importMemeberJSON.getJsonFile(), importProjectJSON.getJsonFile());
+        double weeks = var.getWeeks();
+        double maxYMargin = 1.2;
+        double maxY = var.getEV(weeks) * maxYMargin;
+        Label label;
+        String graphTitle;
+        if(graphName.equals("EV")) {
+            label = new Label("Earned Value");
+            graphTitle = "Earned Value";
+        } else if (graphName.equals("CV")){
+            label = new Label("Cost Variance");
+            graphTitle = "Cost Variance";
+        } else if (graphName.equals("SV")) {
+            label = new Label("Schedule Variance");
+            graphTitle = "Schedule Variance";
+        } else {
+            throw new Exception("graph name not matching");
+        }
+
+        //Defining the x axis
+        NumberAxis xAxis = new NumberAxis (0, weeks, 2);
+        xAxis.setLabel("Time in weeks");
+
+
+        //Defining the y axis
+        NumberAxis yAxis = new NumberAxis  (0, maxY, maxY/100);
+        yAxis.setLabel("Cost in SEK");
+
+        //Creating the line chart
+        LineChart linechart = new LineChart(xAxis, yAxis);
+
+        linechart.setPrefSize(primScreenBounds.getWidth() - 100, primScreenBounds.getHeight() - 100);
+
+        XYChart.Series EV = new XYChart.Series();
+        EV.setName("EV");
+
+        XYChart.Series mainFunction = new XYChart.Series();
+        mainFunction.setName(graphName);
+
+        XYChart.Series delta = new XYChart.Series();
+        delta.setName(graphTitle);
+
+        if (graphName.equals("EV")){
+            for (int i = -1 ; i<var.getWeeks();i=i+2){
+                EV.getData().add(new XYChart.Data(i+1,var.calculateEV(i+1)));
+            }
+            linechart.getData().addAll(EV);
+        } else if (graphName.equals("CV")){
+            int XInterval = 0;
+            ArrayList<Double> CVValues = var.getCV();
+            for (int i = 0; i < CVValues.size(); i= i+0){
+                mainFunction.getData().add(new XYChart.Data(XInterval, CVValues.get(i)));
+
+                i ++;
+                EV.getData().add(new XYChart.Data(XInterval, CVValues.get(i)));
+
+                i ++;
+
+                if ( i == CVValues.size()-2) {
+                    delta.getData().add(new XYChart.Data(XInterval, CVValues.get(i-1)));
+                    delta.getData().add(new XYChart.Data(XInterval, CVValues.get(i -2)));
+                }
+
+                XInterval += 2;
+
+            }
+
+            linechart.getData().addAll(mainFunction, EV, delta);
+            delta.setName( graphTitle + " = " + ((CVValues.get(CVValues.size()-3)) - (CVValues.get(CVValues.size()-4))) + " Kr" );
+        }
+
+        else if (graphName.equals("SV")){
+            int XInterval = 0;
+            ArrayList<Double> SVValues = var.getSV();
+            for (int i = 0; i < SVValues.size(); i= i+0){
+                mainFunction.getData().add(new XYChart.Data(XInterval, SVValues.get(i)));
+
+                i ++;
+                EV.getData().add(new XYChart.Data(XInterval, SVValues.get(i)));
+
+                i ++;
+
+                if ( i == SVValues.size()-2) {
+                    delta.getData().add(new XYChart.Data(XInterval, SVValues.get(i-1)));
+                    delta.getData().add(new XYChart.Data(XInterval, SVValues.get(i -2)));
+                }
+                XInterval += 2;
+
+            }
+            delta.setName( graphTitle + " = " + ((SVValues.get(SVValues.size()-3)) - (SVValues.get(SVValues.size()-4))) + " Kr");
+            linechart.getData().addAll(mainFunction,EV, delta);
+        } else {
+            throw new Exception("graphName is not matching");
+        } Group root = new Group(linechart);
+
+        Scene scene = new Scene(root,primScreenBounds.getWidth() - 100, primScreenBounds.getHeight() - 100);
+        window.setScene(scene);
+        window.show();
+    }
 
 }

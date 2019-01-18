@@ -11,10 +11,18 @@ public class ImportJSON {
 
     private ArrayList <TeamMemberData> teamMembers;
 
-    private static final String JSON_FILE = ClassLoader.getSystemResource("TeamMemberData.json").getFile();
+    private File JSON_file;
 
     public ImportJSON() {
         this.teamMembers = new ArrayList<>();
+    }
+
+    public void setJsonFile(File file){
+        this.JSON_file = file;
+    }
+
+    public File getJsonFile(){
+        return this.JSON_file;
     }
     
     // Parses the JSON file and returns an array of team members
@@ -22,7 +30,7 @@ public class ImportJSON {
 
 
         Gson gson = new Gson();
-        File file = new File(JSON_FILE);
+        File file = JSON_file;
 
         JsonReader br = new JsonReader(new FileReader(file));
 
