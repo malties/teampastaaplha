@@ -3,6 +3,7 @@ package pastaPackage;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
@@ -16,8 +17,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -29,6 +33,7 @@ import java.sql.SQLOutput;
 import com.sun.java.swing.*;
 import javafx.stage.WindowEvent;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -57,13 +62,13 @@ public class GUI extends Application {
         stage.show();
 
         // Imports JSON file
-        Label importLabel = new Label("Import JSON file");
+        Label importLabel = new Label("Import project data:");
         Button importButton = new Button("Import");
         importButton.setOnAction(event -> showImportWindow());
 
         // Prints all team members' information
-        Label printAllLabel = new Label("View all team member's data");
-        Button printAllButton = new Button("Show All Members");
+        Label printAllLabel = new Label("View all team member's data:");
+        Button printAllButton = new Button("View");
         printAllButton.setOnAction(event -> {
             if(importMemeberJSON.getJsonFile() == null){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -77,8 +82,8 @@ public class GUI extends Application {
         });
 
         // Prints project information
-        Label printProjectLabel = new Label("View project information");
-        Button printProject = new Button("Show project information");
+        Label printProjectLabel = new Label("View project information:");
+        Button printProject = new Button("View");
         printProject.setOnAction(event -> {
             if(importProjectJSON.getJsonFile() == null || importMemeberJSON.getJsonFile() == null){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -92,13 +97,13 @@ public class GUI extends Application {
         });
 
         // Search for team member information
-        Label searchLabel = new Label("Search for team member information");
-        Button searchButton = new Button("Search team member data");
+        Label searchLabel = new Label("Search for team member information:");
+        Button searchButton = new Button("Search");
         searchButton.setOnAction(event -> searchByTeamMember());
 
         // Opens Risk Matrix window
-        Label rmLabel = new Label("Risk Matrix");
-        Button riskMatrixButton = new Button("Risk Matrix");
+        Label rmLabel = new Label("View Risk Matrix:");
+        Button riskMatrixButton = new Button("View");
         riskMatrixButton.setOnAction(event -> {
             if(matrix == null){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -113,7 +118,7 @@ public class GUI extends Application {
 
         // Opens Cost Variance window
         Label cvLabel = new Label("Cost Variance");
-        Button costVarianceButton = new Button("Cost Variance");
+        Button costVarianceButton = new Button("View");
         costVarianceButton.setOnAction(event -> {
             if(importProjectJSON.getJsonFile() == null || importMemeberJSON.getJsonFile() == null){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -133,7 +138,7 @@ public class GUI extends Application {
 
         // Opens Schedule Variance window
         Label svLabel = new Label("Schedule Variance");
-        Button scheduleVarianceButton = new Button("Schedule Variance");
+        Button scheduleVarianceButton = new Button("View");
         scheduleVarianceButton.setOnAction(event -> {
             if(importProjectJSON.getJsonFile() == null || importMemeberJSON.getJsonFile() == null){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -153,7 +158,7 @@ public class GUI extends Application {
 
         // Opens Earned Value window
         Label evLabel = new Label("Earned Value");
-        Button earnedValueButton = new Button("Earned Value");
+        Button earnedValueButton = new Button("View");
         earnedValueButton.setOnAction(event -> {
             if(importProjectJSON.getJsonFile() == null || importMemeberJSON.getJsonFile() == null){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -171,23 +176,52 @@ public class GUI extends Application {
             }
         });
 
-        // Opens Project analysis Window
-        VBox layout = new VBox(20);
-        layout.getChildren().addAll(importLabel, importButton, printAllLabel, printAllButton,
-                printProjectLabel, printProject, searchLabel, searchButton, rmLabel, riskMatrixButton,evLabel, earnedValueButton, svLabel,
-                scheduleVarianceButton, cvLabel, costVarianceButton);
-        layout.setAlignment(Pos.BASELINE_CENTER);
-        layout.setSpacing(6);
+        GridPane layout = new GridPane();
+        layout.setPadding(new Insets(20));
+        layout.setHgap(25);
+        layout.setVgap(15);
+
+        Text text1 = new Text("Project Information");
+        text1.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+
+        Text text2 = new Text("Project Analysis");
+        text2.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+
+        Text importText = new Text("Import project data:");
+        importText.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+
+        layout.add(importText, 0, 0);
+        layout.add(importButton, 1, 0);
+
+        layout.add(text1,0,1, 2,1);
+
+        layout.add(printAllLabel, 0,2);
+        layout.add(printAllButton,1,2);
+
+        layout.add(printProjectLabel, 0,3);
+        layout.add(printProject,1,3);
+
+        layout.add(rmLabel, 0, 4);
+        layout.add(riskMatrixButton, 1, 4);
+
+        layout.add(searchLabel, 0, 5);
+        layout.add(searchButton, 1, 5);
+
+        layout.add(text2,0,6,2,1);
+
+        layout.add(evLabel, 0, 7);
+        layout.add(earnedValueButton, 1, 7);
+
+        layout.add(svLabel, 0, 8);
+        layout.add(scheduleVarianceButton, 1, 8);
+
+        layout.add(cvLabel, 0, 9);
+        layout.add(costVarianceButton, 1, 9);
 
         Scene scene = new Scene(layout);
-
-        scene.getStylesheets().add("designColors.css");
-
+        //scene.getStylesheets().add("designColors.css");
         stage.setScene(scene);
 
-        //setting the size of the home screen
-        primaryStage.setMinHeight(500);
-        primaryStage.setMinWidth(300);
         //centering the application
         primaryStage.centerOnScreen();
         stage.show();
@@ -452,13 +486,12 @@ public class GUI extends Application {
     }
 
     private void showGraph(String graphName) throws Exception {
+
         // A new window
         final Stage window = new Stage();
         window.setTitle("Schedule Variance");
 
         Variance var = new Variance(importMemeberJSON.getJsonFile(), importProjectJSON.getJsonFile());
-        //System.out.println(var.plannedSpent(8));
-        //System.out.println(var.actualSpent(8));
         double weeks = var.getWeeks();
         double maxYMargin = 1.2;
         double maxY = var.getEV(weeks) * maxYMargin;

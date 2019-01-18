@@ -3,28 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="98c1257b-54e8-40e0-bb19-92b7a93c3253" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$10.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$11.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$12.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$13.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI$9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Individual.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Individual.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/GUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/ImportJSON.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/ImportJSON.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/ImportProjectJSON.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/ImportProjectJSON.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/ProjectData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/ProjectData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/TeamMemberData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/TeamMemberData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/UserInput.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/UserInput.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pastaPackage/Variance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pastaPackage/Variance.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,11 +20,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2431">
-              <caret line="289" column="42" lean-forward="true" selection-start-line="289" selection-start-column="42" selection-end-line="289" selection-end-column="42" />
+            <state relative-caret-position="124">
+              <caret line="75" column="31" lean-forward="true" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="31" />
               <folding>
-                <element signature="e#11408#11409#0" expanded="true" />
-                <element signature="e#11472#11473#0" expanded="true" />
+                <element signature="e#11556#11557#0" expanded="true" />
+                <element signature="e#11620#11621#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -92,8 +74,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="x" value="93" />
+    <option name="y" value="58" />
+    <option name="width" value="1387" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -156,7 +140,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547763095817" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547776920117" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -166,6 +150,9 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\fredr\IdeaProjects\teampastaaplha\pastaManager\src\main\resources" />
     </key>
@@ -261,9 +248,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/Individual.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/ImportProjectJSON.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -316,13 +300,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/Individual.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pastaPackage/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2431">
-          <caret line="289" column="42" lean-forward="true" selection-start-line="289" selection-start-column="42" selection-end-line="289" selection-end-column="42" />
+        <state relative-caret-position="124">
+          <caret line="75" column="31" lean-forward="true" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="31" />
           <folding>
-            <element signature="e#11408#11409#0" expanded="true" />
-            <element signature="e#11472#11473#0" expanded="true" />
+            <element signature="e#11556#11557#0" expanded="true" />
+            <element signature="e#11620#11621#0" expanded="true" />
           </folding>
         </state>
       </provider>
